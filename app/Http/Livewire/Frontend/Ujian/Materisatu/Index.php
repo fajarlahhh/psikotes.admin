@@ -14,7 +14,7 @@ class Index extends Component
   public function decrementWaktu()
   {
     if ($this->waktu >= 0) {
-      //   $this->waktu--;
+      $this->waktu--;
     } else {
       redirect('/ujian/materisatu?key=' . $this->key);
     }
@@ -22,6 +22,9 @@ class Index extends Component
       JawabanPengguna::where('pengguna_id', auth()->id())->where('ujian_id', $this->key)->whereNull('waktu')->update([
         'waktu' => $this->waktu,
       ]);
+      $data = JawabanPengguna::where('pengguna_id', auth()->id())->where('ujian_id', $this->key)->whereNotNull('waktu')->orderBy('waktu', 'desc')->first();
+      $data->waktu = 0;
+      $data->save();
     }
   }
 
