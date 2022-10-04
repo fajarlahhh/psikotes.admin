@@ -35,7 +35,7 @@ CREATE TABLE `jawaban_pengguna` (
   KEY `pengguna_id` (`pengguna_id`),
   CONSTRAINT `jawaban_pengguna_ibfk_1` FOREIGN KEY (`materi_satu_id`) REFERENCES `materi_satu` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `jawaban_pengguna_ibfk_2` FOREIGN KEY (`pengguna_id`) REFERENCES `pengguna` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 ;
 
 -- ----------------------------
 -- Records of jawaban_pengguna
@@ -54,18 +54,18 @@ DROP TABLE IF EXISTS `materi_satu`;
 CREATE TABLE `materi_satu` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `soal` longtext,
-  `a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `b` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `c` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `d` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `e` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `kunci` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `a` longtext ,
+  `b` longtext ,
+  `c` longtext ,
+  `d` longtext ,
+  `e` longtext ,
+  `kunci` char(1)  DEFAULT NULL,
   `operator` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 ;
 
 -- ----------------------------
 -- Records of materi_satu
@@ -91,7 +91,7 @@ CREATE TABLE `pengguna` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 ;
 
 -- ----------------------------
 -- Records of pengguna
@@ -114,7 +114,7 @@ CREATE TABLE `ujian` (
   `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `deleted_at` (`deleted_at`,`materi`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 ;
 
 -- ----------------------------
 -- Records of ujian
@@ -146,7 +146,7 @@ CREATE TABLE `ujian_soal` (
   PRIMARY KEY (`id`),
   KEY `ujian_id` (`ujian_id`),
   CONSTRAINT `ujian_soal_ibfk_1` FOREIGN KEY (`ujian_id`) REFERENCES `ujian` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 ;
 
 -- ----------------------------
 -- Records of ujian_soal

@@ -2,20 +2,20 @@
   @push('judul')
   @endpush
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3">
       <div class="alert alert-info fade show" role="alert">
         Nama : {{ auth()->user()->nama }}<br>
         No. Peserta : {{ auth()->user()->no_peserta }}
       </div>
     </div>
-    <div class="col-9">
+    <div class="col-lg-9">
       <h3>Materi yang tersedia</h3>
       <hr>
       <div class="row">
         @foreach ($dataUjian as $row)
           @switch($row->materi)
             @case(1)
-              <div class="col">
+              <div class="col-lg-4">
                 <div class="card mb-4 rounded-3 shadow-sm">
                   <div class="card-header py-3">
                     <h4 class="my-0 fw-normal">Materi Satu</h4>
@@ -36,7 +36,7 @@
             @break
 
             @case(2)
-              <div class="col">
+              <div class="col-lg-4">
                 <div class="card mb-4 rounded-3 shadow-sm">
                   <div class="card-header py-3">
                     <h4 class="my-0 fw-normal">Materi Dua</h4>
@@ -49,7 +49,7 @@
             @break
 
             @case(3)
-              <div class="col">
+              <div class="col-lg-4">
                 <div class="card mb-4 rounded-3 shadow-sm">
                   <div class="card-header py-3">
                     <h4 class="my-0 fw-normal">Materi Tiga</h4>
