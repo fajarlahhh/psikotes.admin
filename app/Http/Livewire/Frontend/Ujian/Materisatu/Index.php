@@ -69,7 +69,7 @@ class Index extends Component
     $this->jawaban = JawabanPengguna::findOrFail($this->soal)->jawaban ?: null;
 
     return view('livewire.frontend.ujian.materisatu.index', [
-      'tampil' => \App\Models\Materisatu::find(JawabanPengguna::findOrFail($this->soal)->materi_satu_id),
+      'tampil' => \App\Models\MateriSatu::find(JawabanPengguna::findOrFail($this->soal)->materi_satu_id),
     ]);
   }
 }
