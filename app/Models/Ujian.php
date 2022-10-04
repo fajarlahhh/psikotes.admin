@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MateriSatu extends Model
+class Ujian extends Model
 {
   use HasFactory, SoftDeletes;
 
-  protected $table = "materi_satu";
+  protected $table = "ujian";
+
+  public function ujianSoal()
+  {
+    return $this->hasMany(UjianSoal::class);
+  }
 }

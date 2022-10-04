@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'can:isUser']], function () {
   Route::get('/', \App\Http\Livewire\Frontend\Home::class);
-  Route::get('/materisatu', \App\Http\Livewire\Frontend\Materisatu::class);
+  Route::get('/ujian', \App\Http\Livewire\Frontend\Ujian\Index::class);
+  Route::get('/ujian/materisatu', \App\Http\Livewire\Frontend\Ujian\Materisatu\Hasil::class);
 });
 
 Route::prefix('admin')->middleware(['auth', 'can:isAdmin'])->group(function () {
@@ -23,11 +24,9 @@ Route::prefix('admin')->middleware(['auth', 'can:isAdmin'])->group(function () {
   Route::get('/', \App\Http\Livewire\Backend\Home::class);
   Route::get('/datapeserta', \App\Http\Livewire\Backend\Datapeserta::class);
   Route::get('/gantikatasandi', \App\Http\Livewire\Backend\Gantikatasandi::class);
-  Route::get('/materidua', \App\Http\Livewire\Backend\Materidua::class);
   Route::prefix('materisatu')->group(function () {
     Route::get('/', \App\Http\Livewire\Backend\Materisatu\Index::class);
     Route::get('/tambah', \App\Http\Livewire\Backend\Materisatu\Form::class);
     Route::get('/edit/{key}', \App\Http\Livewire\Backend\Materisatu\Form::class);
   });
-  Route::get('/materitiga', \App\Http\Livewire\Backend\Materitiga::class);
 });

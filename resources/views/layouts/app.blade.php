@@ -81,13 +81,6 @@
         data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-nav">
-        <div class="nav-item text-nowrap">
-          <a class="nav-link px-3" id="btn-logout" href="#">Sign out</a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          </form>
-        </div>
-      </div>
     </header>
     @php
       $currentUrl = '/' . Request::path();
@@ -95,7 +88,7 @@
     <div class="container-fluid">
       <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky pt-3 sidebar-sticky">
+          <div class="position-sticky sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link @if (strpos($currentUrl, '/admin') === 0 && strlen($currentUrl) == strlen('/admin')) active @endif" aria-current="page" href="/admin">
@@ -115,6 +108,11 @@
                   href="/admin/gantikatasandi">
                   <span data-feather="key" class="align-text-bottom"></span>
                   Ganti Kata Sandi
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="javascript:;" id="btn-logout">
+                  Log out
                 </a>
               </li>
             </ul>
@@ -170,9 +168,14 @@
       </nav>
     </header>
     <main>
-      {{ $slot }}
+      <div style="margin-top: 70px; margin-left: 20px; margin-right:20px">
+        {{ $slot }}
+      </div>
     </main>
   @endif
+
+  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+  </form>
   @livewireScripts
 
   <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
