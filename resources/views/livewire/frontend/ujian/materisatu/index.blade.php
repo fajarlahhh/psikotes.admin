@@ -29,12 +29,15 @@
             @foreach ($dataJawabanPengguna as $index => $row)
               <div class="col-4 mb-2 ">
                 <button wire:click="$set('soal',{{ $row->getKey() }})"
-                  class="btn-xs btn @if ($row->jawaban != null) @if ($soal == $row->id)
-                      btn-danger
-                  @else btn-success @endif
-@else
-btn-secondary @endif width-full"
-                  style="width:100%">{{ ++$index }}</button>
+                  class="btn-xs btn @php
+if ($row->jawaban != null) {
+    if ($soal == $row->getKey()){
+                      echo 'btn-danger';
+    }else{echo'btn-success';}
+                }else{if ($soal == $row->getKey()){
+                      echo 'btn-danger';
+    }else{echo'btn-secondary';}} @endphp width-full"
+                  style="width:100%">{{ ++$index }}{{ $row->getKey() }}</button>
               </div>
             @endforeach
           </div>
