@@ -2,7 +2,10 @@
 
 namespace App\Http\Livewire\Backend;
 
+use App\Models\MateriSatu;
 use App\Models\Ujian;
+use App\Models\UjianSoal;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class Home extends Component
@@ -33,11 +36,23 @@ class Home extends Component
 
   public function bukaSatu()
   {
-    $this->data = new Ujian();
-    $this->data->waktu = $this->waktuSatu ?: 0;
-    $this->data->materi = 1;
+    DB::transaction(function () {
 
-    $this->data->save();
+      $this->data = new Ujian();
+      $this->data->waktu = $this->waktuSatu ?: 0;
+      $this->data->materi = 1;
+      $this->data->save();
+
+      $detail = MateriSatu::all()->map(function ($q) {
+        return [
+          'ujian_id' => $this->data->id,
+          'materi_satu_id' => $q->id,
+          'created_at' => now(),
+          'updated_at' => now(),
+        ];
+      })->toArray();
+      UjianSoal::insert($detail);
+    });
 
     $this->bukaSatu = true;
   }

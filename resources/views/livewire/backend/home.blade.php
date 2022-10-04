@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="col">
+    {{-- <div class="col">
       <div class="card mb-4 rounded-3 shadow-sm">
         <div class="card-header py-3">
           <h4 class="my-0 fw-normal">Materi Dua</h4>
@@ -55,6 +55,6 @@
           @endif
         </div>
       </div>
-    </div>
+    </div> --}}
   </div>
 </div>

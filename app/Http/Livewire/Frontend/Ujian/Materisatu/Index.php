@@ -14,7 +14,7 @@ class Index extends Component
   public function decrementWaktu()
   {
     if ($this->waktu >= 0) {
-      $this->waktu--;
+      //   $this->waktu--;
     } else {
       redirect('/ujian/materisatu?key=' . $this->key);
     }

@@ -1,6 +1,6 @@
 <div>
   <div class="row">
-    <div class="col-3">
+    <div class="col-lg-3">
       <div class="alert alert-info fade show" role="alert">
         Nama : {{ auth()->user()->nama }}<br>
         No. Peserta : {{ auth()->user()->no_peserta }}
@@ -116,6 +116,8 @@ btn-secondary @endif width-full"
         @error('jawaban')
           <h6 class="text-danger" style="margin-top: 10px">Jawaban belum diisi</h6>
         @enderror
+        <br>
+        <br>
       </div>
     </div>
   @else
