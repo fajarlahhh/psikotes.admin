@@ -1,28 +1,36 @@
 <div>
   <form wire:submit.prevent="submit">
-    <img class="mb-4" src="{{ asset('/brand/bootstrap-logo.svg') }}" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-    <div class="form-floating">
-      <input type="text" wire:model.defer="noPeserta" class="form-control" id="floatingInput"
-        placeholder="No. Peserta">
-      <label for="floatingInput">No. Peserta</label>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="No. Peserta" wire:model="noPeserta">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-user"></span>
+        </div>
+      </div>
     </div>
-    <div class="form-floating">
-      <input type="password" wire:model.defer="kataSandi" class="form-control" id="floatingPassword"
-        placeholder="Kata Sandi">
-      <label for="floatingPassword">Kata Sandi</label>
+    <div class="input-group mb-3">
+      <input type="password" class="form-control" placeholder="Kata Sandi" wire:model="kataSandi">
+      <div class="input-group-append">
+        <div class="input-group-text">
+          <span class="fas fa-lock"></span>
+        </div>
+      </div>
     </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+    <div class="row">
+      <div class="col-8">
+        <div class="icheck-primary">
+          <input type="checkbox" id="remember">
+          <label for="remember">
+            Remember Me
+          </label>
+        </div>
+      </div>
+      <div class="col-4">
+        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+      </div>
     </div>
-    <input type="submit" class="w-100 btn btn-lg btn-primary" value="Sign in">
-    <br>
-    <br>
-    <x-alert />
-    <x-info />
   </form>
+  <br>
+  <x-info />
+  <x-alert />
 </div>

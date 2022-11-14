@@ -15,18 +15,31 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'can:isUser']], function () {
   Route::get('/', \App\Http\Livewire\Frontend\Home::class);
-  Route::get('/ujian', \App\Http\Livewire\Frontend\Ujian\Index::class);
-  Route::get('/ujian/materisatu', \App\Http\Livewire\Frontend\Ujian\Materisatu\Hasil::class);
+  Route::prefix('materisatu')->group(function () {
+    Route::get('/{key}', \App\Http\Livewire\Frontend\Ujian\Materisatu\Intro::class);
+    Route::get('/{key}/soal', \App\Http\Livewire\Frontend\Ujian\Materisatu\Form::class);
+    Route::get('/{key}/hasil', \App\Http\Livewire\Frontend\Ujian\Materisatu\Hasil::class);
+  });
 });
 
 Route::prefix('admin')->middleware(['auth', 'can:isAdmin'])->group(function () {
   Route::post('/upload', [\App\Http\Controllers\FileController::class, 'store'])->name('file.upload');
   Route::get('/', \App\Http\Livewire\Backend\Home::class);
-  Route::get('/datapeserta', \App\Http\Livewire\Backend\Datapeserta::class);
   Route::get('/gantikatasandi', \App\Http\Livewire\Backend\Gantikatasandi::class);
+  Route::prefix('datapeserta')->group(function () {
+    Route::get('/', \App\Http\Livewire\Backend\Datapeserta\Index::class);
+    Route::get('/tambah', \App\Http\Livewire\Backend\Datapeserta\Form::class);
+    Route::get('/edit/{key}', \App\Http\Livewire\Backend\Datapeserta\Form::class);
+  });
   Route::prefix('materisatu')->group(function () {
     Route::get('/', \App\Http\Livewire\Backend\Materisatu\Index::class);
     Route::get('/tambah', \App\Http\Livewire\Backend\Materisatu\Form::class);
     Route::get('/edit/{key}', \App\Http\Livewire\Backend\Materisatu\Form::class);
   });
+  Route::prefix('materidua')->group(function () {
+    Route::get('/', \App\Http\Livewire\Backend\Materidua\Index::class);
+    Route::get('/tambah', \App\Http\Livewire\Backend\Materidua\Form::class);
+    Route::get('/edit/{key}', \App\Http\Livewire\Backend\Materidua\Form::class);
+  });
+  Route::get('/petunjuk', \App\Http\Livewire\Backend\Petunjuk::class);
 });

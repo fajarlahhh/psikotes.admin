@@ -12,8 +12,18 @@ class Ujian extends Model
 
   protected $table = "ujian";
 
-  public function ujianSoal()
+  public function soal()
   {
     return $this->hasMany(UjianSoal::class);
+  }
+
+  public function waktu()
+  {
+    return $this->hasMany(UjianWaktu::class);
+  }
+
+  public function pengguna()
+  {
+    return $this->hasMany(UjianPengguna::class);
   }
 }

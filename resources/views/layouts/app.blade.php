@@ -1,190 +1,174 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.101.0">
-  <title>Signin Template · Bootstrap v5.2</title>
+  <title>{{ config('app.name') }}</title>
 
-  <link rel="icon" href="{{ asset('/brand/bootstrap-logo.svg') }}" type="image/gif">
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/">
-
-  <link href="{{ asset('dist/css/bootstrap.min.css') }}" rel="stylesheet">
-
-  @if (auth()->user()->can('isAdmin'))
-    <link href="{{ asset('dist/css/dashboard.css') }}" rel="stylesheet">
-  @endif
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-
-    .b-example-divider {
-      height: 3rem;
-      background-color: rgba(0, 0, 0, .1);
-      border: solid rgba(0, 0, 0, .15);
-      border-width: 1px 0;
-      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-    }
-
-    .b-example-vr {
-      flex-shrink: 0;
-      width: 1.5rem;
-      height: 100vh;
-    }
-
-    .bi {
-      vertical-align: -.125em;
-      fill: currentColor;
-    }
-
-    .nav-scroller {
-      position: relative;
-      z-index: 2;
-      height: 2.75rem;
-      overflow-y: hidden;
-    }
-
-    .nav-scroller .nav {
-      display: flex;
-      flex-wrap: nowrap;
-      padding-bottom: 1rem;
-      margin-top: -1px;
-      overflow-x: auto;
-      text-align: center;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
-  </style>
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/jqvmap/jqvmap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
   @livewireStyles
 </head>
 
-<body>
-  @if (auth()->user()->can('isAdmin'))
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Hy, {{ auth()->user()->nama }}</a>
-      <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </header>
-    @php
-      $currentUrl = '/' . Request::path();
-    @endphp
-    <div class="container-fluid">
-      <div class="row">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-          <div class="position-sticky sidebar-sticky">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link @if (strpos($currentUrl, '/admin') === 0 && strlen($currentUrl) == strlen('/admin')) active @endif" aria-current="page" href="/admin">
-                  <span data-feather="home" class="align-text-bottom"></span>
-                  Dashboard
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link @if (strpos($currentUrl, '/admin/datapeserta') === 0 && strlen($currentUrl) == strlen('/admin/datapeserta')) active @endif" aria-current="page"
-                  href="/admin/datapeserta">
-                  <span data-feather="users" class="align-text-bottom"></span>
-                  Data Peserta
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link @if (strpos($currentUrl, '/admin/gantikatasandi') === 0 && strlen($currentUrl) == strlen('/admin/gantikatasandi')) active @endif" aria-current="page"
-                  href="/admin/gantikatasandi">
-                  <span data-feather="key" class="align-text-bottom"></span>
-                  Ganti Kata Sandi
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="javascript:;" id="btn-logout">
-                  Log out
-                </a>
-              </li>
-            </ul>
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
+  <div class="wrapper">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+    </nav>
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <a href="index3.html" class="brand-link">
+        <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+          class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Ujian</span>
+      </a>
 
-            <h6
-              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-              <span>Soal</span>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link @if (strpos($currentUrl, '/admin/materisatu') === 0 && strlen($currentUrl) == strlen('/admin/materisatu')) active @endif" href="/admin/materisatu">
-                  <span data-feather="file-text" class="align-text-bottom"></span>
-                  Materi 1
-                </a>
-              </li>
-              <li class="nav-item" href="/admin/materidua">
-                <a class="nav-link @if (strpos($currentUrl, '/admin/materidua') === 0 && strlen($currentUrl) == strlen('/admin/materidua')) active @endif" href="/admin/materidua">
-                  <span data-feather="file-text" class="align-text-bottom"></span>
-                  Materi 2
-                </a>
-              </li>
-              <li class="nav-item" href="/admin/materitiga">
-                <a class="nav-link @if (strpos($currentUrl, '/admin/materitiga') === 0 && strlen($currentUrl) == strlen('/admin/materitiga')) active @endif" href="/admin/materitiga">
-                  <span data-feather="file-text" class="align-text-bottom"></span>
-                  Materi 3
-                </a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-          {{ $slot }}
-        </main>
-      </div>
-    </div>
-  @else
-    <header class="site-header sticky-top py-1">
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Hy, {{ auth()->user()->nama }}</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            </ul>
-            <button class="btn btn-outline-success" id="btn-logout" type="button">Logout</button>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            </form>
+      <div class="sidebar">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="info">
+            <a href="#" class="d-block">
+              {{ auth()->user()->nama }}
+              @if (!auth()->user()->can('isAdmin'))
+                <br>
+                No. Peserta : {{ auth()->user()->no_peserta }}
+              @endif
+            </a>
           </div>
         </div>
-      </nav>
-    </header>
-    <main>
-      <div style="margin-top: 70px; margin-left: 20px; margin-right:20px">
-        {{ $slot }}
+
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+            data-accordion="false">
+            @if (auth()->user()->can('isAdmin'))
+              <li class="nav-item">
+                <a href="/admin" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/datapeserta" class="nav-link">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>
+                    Data Peserta
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/petunjuk" class="nav-link btn-logout">
+                  <i class="nav-icon fas fa-ruler"></i>
+                  <p>
+                    Petunjuk Soal
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link btn-logout">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>
+                    Logout
+                  </p>
+                </a>
+              </li>
+              <li class="nav-header">Materi</li>
+              <li class="nav-item">
+                <a href="/admin/materisatu" class="nav-link">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>
+                    Satu
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/materidua" class="nav-link">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>
+                    Dua
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/admin/materitiga" class="nav-link">
+                  <i class="nav-icon fas fa-file-alt"></i>
+                  <p>
+                    Tiga
+                  </p>
+                </a>
+              </li>
+            @else
+              <li class="nav-item">
+                <a href="/" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Dashboard
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="javascript:;" class="nav-link btn-logout">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>
+                    Logout
+                  </p>
+                </a>
+              </li>
+            @endif
+          </ul>
+        </nav>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        </form>
+        <!-- /.sidebar-menu -->
       </div>
-    </main>
-  @endif
+      <!-- /.sidebar -->
+    </aside>
 
-  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-  </form>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      {{ $slot }}
+    </div>
+    <footer class="main-footer">
+      <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+      All rights reserved.
+      <div class="float-right d-none d-sm-inline-block">
+        <b>Version</b> 3.2.0
+      </div>
+    </footer>
+
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+  </div>
   @livewireScripts
-
-  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
-    integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-  <script src="{{ asset('/dist/js/dashboard.js') }}"></script>
-  <script src="{{ asset('/dist/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('/dist/js/jquery.min.js') }}"></script>
+  <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
   <script>
-    $("#btn-logout").on("click", function(e) {
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+  <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('plugins/sparklines/sparkline.js') }}"></script>
+  <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+  <script src="{{ asset('dist/js/adminlte.js') }}"></script>
+  <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+  <script>
+    $(function() {
+      $('.select2').select2()
+    })
+
+    $(".btn-logout").on("click", function(e) {
       document.getElementById('logout-form').submit();
     });
   </script>

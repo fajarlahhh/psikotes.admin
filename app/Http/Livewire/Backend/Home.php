@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Backend;
 
 use App\Models\MateriSatu;
+use App\Models\Pengguna;
 use App\Models\Ujian;
+use App\Models\UjianPengguna;
 use App\Models\UjianSoal;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -36,6 +38,7 @@ class Home extends Component
 
   public function bukaSatu()
   {
+    $this->validate(['waktuSatu' => 'required']);
     DB::transaction(function () {
 
       $this->data = new Ujian();
@@ -43,7 +46,7 @@ class Home extends Component
       $this->data->materi = 1;
       $this->data->save();
 
-      $detail = MateriSatu::all()->map(function ($q) {
+      $soal = MateriSatu::all()->map(function ($q) {
         return [
           'ujian_id' => $this->data->id,
           'materi_satu_id' => $q->id,
@@ -51,7 +54,17 @@ class Home extends Component
           'updated_at' => now(),
         ];
       })->toArray();
-      UjianSoal::insert($detail);
+      UjianSoal::insert($soal);
+
+      $pengguna = Pengguna::where('level', 2)->get()->map(function ($q) {
+        return [
+          'ujian_id' => $this->data->id,
+          'pengguna_id' => $q->id,
+          'created_at' => now(),
+          'updated_at' => now(),
+        ];
+      })->toArray();
+      UjianPengguna::insert($pengguna);
     });
 
     $this->bukaSatu = true;
@@ -67,6 +80,7 @@ class Home extends Component
 
   public function bukaDua()
   {
+    $this->validate(['waktuDua' => 'required']);
     $this->data = new Ujian();
     $this->data->waktu = $this->waktuDua ?: 0;
     $this->data->materi = 2;
@@ -86,6 +100,7 @@ class Home extends Component
 
   public function bukaTiga()
   {
+    $this->validate(['waktuTiga' => 'required']);
     $this->data = new Ujian();
     $this->data->waktu = $this->waktuTiga ?: 0;
     $this->data->materi = 3;

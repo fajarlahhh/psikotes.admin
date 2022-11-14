@@ -1,70 +1,53 @@
 <div>
-  @push('judul')
-  @endpush
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="alert alert-info fade show" role="alert">
-        Nama : {{ auth()->user()->nama }}<br>
-        No. Peserta : {{ auth()->user()->no_peserta }}
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item active"><a href="#">Dashboard</a></li>
+          </ol>
+        </div>
       </div>
     </div>
-    <div class="col-lg-9">
-      <h3>Materi yang tersedia</h3>
-      <hr>
+  </div>
+  <section class="content">
+    <div class="container-fluid">
       <div class="row">
-        @foreach ($dataUjian as $row)
+        @foreach ($data as $row)
           @switch($row->materi)
             @case(1)
               <div class="col-lg-4">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                  <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Materi Satu</h4>
+                <div class="card card-default">
+                  <div class="card-header">
+                    <h4 class="card-title">Materi Satu</h4>
                   </div>
                   <div class="card-body">
-                    Waktu : {{ \Carbon\CarbonInterval::seconds($row->waktu)->cascade()->forHumans() }}<br>
-                    Jumlah Soal : {{ $row->ujianSoal->count() }}
-                    @if (\App\Models\JawabanPengguna::where('pengguna_id', auth()->id())->where('ujian_id', $row->getKey())->where('waktu', 0)->count() == 0)
-                      <a href="javascript:;" wire:click="buka({{ $row->getKey() }})" type="button"
-                        class="w-100 btn btn-lg btn-outline-primary">Mulai</a>
+                    @php
+                      $dataWaktu = \App\Models\UjianWaktu::where('ujian_id', $row->getKey())
+                          ->where('pengguna_id', auth()->id())
+                          ->orderBy('waktu')
+                          ->get();
+                      $sisaWaktu = $dataWaktu->count() > 0 ? $dataWaktu->first()->waktu : $row->waktu;
+                    @endphp
+                    Waktu : {{ $sisaWaktu > 0? \Carbon\CarbonInterval::seconds($sisaWaktu)->cascade()->forHumans(): 0 }}<br>
+                    Jumlah Soal : {{ $row->soal->count() }}
+                    @if ($sisaWaktu > 0)
+                      <a href="/materisatu/{{ $row->getKey() }}" type="button"
+                        class="w-100 btn btn-lg btn-outline-primary">Buka</a>
                     @else
-                      <a href="/ujian/materisatu?key={{ $row->getKey() }}" type="button"
+                      <a href="/materisatu/{{ $row->getKey() }}/hasil" type="button"
                         class="w-100 btn btn-lg btn-outline-primary">Lihat Hasil</a>
                     @endif
                   </div>
                 </div>
               </div>
             @break
-
-            @case(2)
-              <div class="col-lg-4">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                  <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Materi Dua</h4>
-                  </div>
-                  <div class="card-body">
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary" wire:click="bukaDua">Buka</button>
-                  </div>
-                </div>
-              </div>
-            @break
-
-            @case(3)
-              <div class="col-lg-4">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                  <div class="card-header py-3">
-                    <h4 class="my-0 fw-normal">Materi Tiga</h4>
-                  </div>
-                  <div class="card-body">
-                    <button type="button" class="w-100 btn btn-lg btn-outline-primary" wire:click="bukaTiga">Buka</button>
-                  </div>
-                </div>
-              </div>
-            @break
-
-            @default
           @endswitch
         @endforeach
       </div>
     </div>
-  </div>
+  </section>
 </div>

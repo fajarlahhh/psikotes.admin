@@ -7,9 +7,7 @@ use Livewire\Component;
 
 class Index extends Component
 {
-  protected $paginationTheme = 'bootstrap';
-
-  public $key, $dataForm, $soal, $jawaban_a, $jawaban_b, $jawaban_c, $jawaban_d, $jawaban_e, $kunci, $tambah = false;
+  public $key;
 
   public function setKey($key = null)
   {
