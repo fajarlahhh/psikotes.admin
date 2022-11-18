@@ -46,5 +46,10 @@ Route::prefix('admin')->middleware(['auth', 'can:isAdmin'])->group(function () {
     Route::get('/tambah', \App\Http\Livewire\Backend\Materidua\Form::class);
     Route::get('/edit/{key}', \App\Http\Livewire\Backend\Materidua\Form::class);
   });
+  Route::prefix('materitiga')->group(function () {
+    Route::get('/', \App\Http\Livewire\Backend\Materitiga\Index::class);
+    Route::get('/tambah', \App\Http\Livewire\Backend\Materitiga\Form::class);
+    Route::get('/edit/{key}', \App\Http\Livewire\Backend\Materitiga\Form::class);
+  });
   Route::get('/petunjuk', \App\Http\Livewire\Backend\Petunjuk::class);
 });
