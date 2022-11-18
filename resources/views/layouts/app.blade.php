@@ -171,6 +171,9 @@
     $(".btn-logout").on("click", function(e) {
       document.getElementById('logout-form').submit();
     });
+    // $(document).bind("contextmenu", function(e) {
+    //   return false;
+    // });
   </script>
   @stack('scripts')
 </body>

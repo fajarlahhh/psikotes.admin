@@ -9,8 +9,6 @@ class Hasil extends Component
 {
   public $key, $benar = 0, $salah = 0, $belum = 0;
 
-  protected $queryString = ['key'];
-
   public function mount()
   {
     $dataJawabanMateriSatu = JawabanMateriSatu::where('pengguna_id', auth()->id())->where('ujian_id', $this->key)->leftJoin('materi_satu', 'materi_satu.id', '=', 'jawaban_materi_satu.materi_satu_id')->get();

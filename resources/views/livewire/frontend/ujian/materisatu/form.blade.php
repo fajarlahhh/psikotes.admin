@@ -26,13 +26,13 @@
                     <button wire:click="$set('soal',{{ $row->getKey() }})"
                       class="btn-xs btn @php if ($row->jawaban != null) {
                                                 if ($soal == $row->getKey()){
-                                                    echo 'btn-danger';
+                                                    echo 'btn-success';
                                                 } else { 
-                                                    echo'btn-success';
+                                                    echo'btn-danger';
                                                 }
                                             } else {
                                                 if ($soal == $row->getKey()){
-                                                    echo 'btn-danger';
+                                                    echo 'btn-success';
                                                 } else { 
                                                     echo'btn-secondary';
                                                 }
@@ -127,6 +127,9 @@
                   </tr>
                 </table>
                 <button class="btn btn-success" onclick="submit()">Submit</button>
+                @if ($dataJawabanMateriSatu->count() == $dataJawabanMateriSatu->whereNotNull('jawaban')->count())
+                  <button class="btn btn-danger" wire:click="waktu(true)">Selesai</button>
+                @endif
                 @error('jawaban')
                   <h6 class="text-danger" style="margin-top: 10px">Jawaban belum diisi</h6>
                 @enderror
@@ -136,7 +139,7 @@
         @else
           <div class="col-lg-12 text-center">
             <h5 class="text-danger">Waktu Anda Sudah Habis</h5><br>
-            <a href="/ujian/materisatu?key={{ $key }}" class="btn btn-primary">Klik Hasil</a>
+            <a href="/materisatu/{{ $key }}/hasil" class="btn btn-primary">Klik Hasil</a>
           </div>
         @endif
       </div>
@@ -148,6 +151,7 @@
     @endif
 
     <script>
+      var selesai = false
       var now = new Date('{{ $now }}');
       Livewire.on('reinit', () => {
         $('input[name="jawaban"]').attr('checked', false);
@@ -155,13 +159,15 @@
 
       window.onbeforeunload = function(e) {
         window.livewire.emit('waktu');
-        e = e || window.event;
+        if (selesai == false) {
+          e = e || window.event;
 
-        if (e) {
-          e.returnValue = 'Sure?';
+          if (e) {
+            e.returnValue = 'Sure?';
+          }
+
+          return 'Sure?';
         }
-
-        return 'Sure?';
       };
 
       function submit() {
@@ -169,7 +175,6 @@
         if (jawaban) {
           window.livewire.emit('submit', jawaban, now);
         }
-        console.log();
       }
 
       CountDownTimer();
@@ -188,6 +193,7 @@
           now.setSeconds(now.getSeconds() + 1);
           var distance = end - now;
           if (distance < 0) {
+            selesai = true;
             window.livewire.emit('waktu', true);
             clearInterval(timer);
             return;

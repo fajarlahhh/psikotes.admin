@@ -20,6 +20,11 @@ Route::group(['middleware' => ['auth', 'can:isUser']], function () {
     Route::get('/{key}/soal', \App\Http\Livewire\Frontend\Ujian\Materisatu\Form::class);
     Route::get('/{key}/hasil', \App\Http\Livewire\Frontend\Ujian\Materisatu\Hasil::class);
   });
+  Route::prefix('materidua')->group(function () {
+    Route::get('/{key}', \App\Http\Livewire\Frontend\Ujian\Materidua\Intro::class);
+    Route::get('/{key}/soal', \App\Http\Livewire\Frontend\Ujian\Materidua\Form::class);
+    Route::get('/{key}/hasil', \App\Http\Livewire\Frontend\Ujian\Materidua\Hasil::class);
+  });
 });
 
 Route::prefix('admin')->middleware(['auth', 'can:isAdmin'])->group(function () {
