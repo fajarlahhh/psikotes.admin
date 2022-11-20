@@ -19,220 +19,104 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header form-inline">
+              Jenis :&nbsp;
               <select wire:model="jenis" class="form-control">
                 <option value="angka">Angka</option>
                 <option value="huruf">Huruf</option>
                 <option value="simbol">Simbol</option>
-              </select>&nbsp;
-              <select wire:model="kolom" class="form-control">
-                <option value="1">Kolom 1</option>
-                <option value="2">Kolom 2</option>
-                <option value="3">Kolom 3</option>
-                <option value="4">Kolom 4</option>
-                <option value="5">Kolom 5</option>
               </select>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
-              <div wire:ignore>
-                <div class="row">
-                  <div class="col-lg-2">
-                    <div class="form-group">
-                      <label for="kataSandi">Jawaban A</label>
-                      <textarea id="editor1">{{ $a }}</textarea>
-                    </div>
-                  </div>
-                  <div class="col-lg-2">
-                    <div class="form-group">
-                      <label for="kataSandi">Jawaban B</label>
-                      <textarea id="editor2">{{ $b }}</textarea>
-                    </div>
-                  </div>
-                  <div class="col-lg-2">
-                    <div class="form-group">
-                      <label for="kataSandi">Jawaban C</label>
-                      <textarea id="editor3">{{ $c }}</textarea>
-                    </div>
-                  </div>
-                  <div class="col-lg-2">
-                    <div class="form-group">
-                      <label for="kataSandi">Jawaban D</label>
-                      <textarea id="editor4">{{ $d }}</textarea>
-                    </div>
-                  </div>
-                  <div class="col-lg-2">
-                    <div class="form-group">
-                      <label for="kataSandi">Jawaban E</label>
-                      <textarea id="editor5">{{ $e }}</textarea>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class=" table-responsive p-0">
-                <table class="table table-hover text-nowrap">
-                  <thead>
-                    <tr>
-                      <th style="width: 10px">No.</th>
-                      <th>Soal</th>
-                      <th>Kunci</th>
-                      <th style="width: 10px"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @if ($data->count() > 0)
-                      @foreach ($detail as $i => $row)
+            <div class="card-body table-responsive  p-0">
+              <table class="table table-borderless">
+                <tr>
+                  @for ($i = 1; $i <= 10; $i++)
+                    <td>
+                      <table class="table table-bordered">
+                        @php
+                          $kolom = $data->where('kolom', $i)->first();
+                        @endphp
                         <tr>
-                          <td>{{ ++$i }}</td>
-                          <td>
-                            <img src="{{ url('/' . $row->soal) }}" alt="" style="width: 100px">
-                          </td>
-                          <td>
-                            {{ $row->kunci }}
-                          </td>
-                          <td>
-                            @if ($row->getKey() == $key)
-                              <button class="btn btn-success btn-sm" wire:click="hapus">Ya, Hapus</button>
-                              <button class="btn btn-danger btn-sm" wire:click="setKey">Batal</button>
-                            @else
-                              <button class="btn btn-danger btn-sm"
-                                wire:click="setKey({{ $row->getKey() }})">Hapus</button>
-                            @endif
-                          </td>
+                          <th colspan="5" class="bg-primary">KOLOM {{ $i }}</th>
                         </tr>
-                      @endforeach
-                      <tr>
-                        <td colspan="4">
-                          @if ($tambahSoal == true)
-                            <form wire:submit.prevent="upload">
-                              <div class="form-group">
-                                <label for="kataSandi">Kunci Jawaban</label>
-                                <select wire:model.defer="kunci" class="form-control">
-                                  <option value="a">A</option>
-                                  <option value="b">B</option>
-                                  <option value="c">C</option>
-                                  <option value="d">D</option>
-                                  <option value="e">E</option>
-                                </select>
-                              </div>
-                              <div class="form-group">
-                                <label for="kataSandi">Gambar</label>
-                                <input type="file" wire:model.defer="file" accept="image/*" class="form-control">
-                              </div>
-                              <input type="submit" class="btn btn-success" value="Simpan">
-                            </form>
-                          @else
-                            <div class="text-center">
-                              <button class="btn btn-primary" wire:click="tambahSoal">Tambah Soal</button>
-                            </div>
-                          @endif
-                        </td>
-                      </tr>
-                    @endif
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
+                        <tr>
+                          <th class="text-center">a</th>
+                          <th class="text-center">b</th>
+                          <th class="text-center">c</th>
+                          <th class="text-center">d</th>
+                          <th class="text-center">e</th>
+                        </tr>
+                        @if ($kolom)
+                          <tr>
+                            <th class="text-center">{{ $kolom['a'] }}</th>
+                            <th class="text-center">{{ $kolom['b'] }}</th>
+                            <th class="text-center">{{ $kolom['c'] }}</th>
+                            <th class="text-center">{{ $kolom['d'] }}</th>
+                            <th class="text-center">{{ $kolom['e'] }}</th>
+                          </tr>
+                        @else
+                          <tr>
+                            <td><input type="text" wire:model.defer="soalKolom.{{ $i }}.a"
+                                class="form-control text-center" style="width: 50px"></td>
+                            <td><input type="text" wire:model.defer="soalKolom.{{ $i }}.b"
+                                class="form-control text-center" style="width: 50px"></td>
+                            <td><input type="text" wire:model.defer="soalKolom.{{ $i }}.c"
+                                class="form-control text-center" style="width: 50px"></td>
+                            <td><input type="text" wire:model.defer="soalKolom.{{ $i }}.d"
+                                class="form-control text-center" style="width: 50px"></td>
+                            <td><input type="text" wire:model.defer="soalKolom.{{ $i }}.e"
+                                class="form-control text-center" style="width: 50px"></td>
+                          </tr>
+                        @endif
+                        <tr>
+                          <th colspan="5" class="bg-secondary">Soal</th>
+                        </tr>
+                        @if ($kolom)
+                          @foreach ($kolom['detail'] as $row)
+                            <tr>
+                              <td class="text-center">{{ $row['a'] }}</td>
+                              <td class="text-center">{{ $row['b'] }}</td>
+                              <td class="text-center">{{ $row['c'] }}</td>
+                              <td class="text-center">{{ $row['d'] }}</td>
+                              <td class="text-center">{{ $row['kunci'] }}</td>
+                            </tr>
+                          @endforeach
+                          <tr>
+                            <td colspan="5" class="text-center">
+                              @if ($key == $row['id'])
+                                <button class="btn btn-danger" wire:click="hapus">Ya, Hapus</button>
+                                <button class="btn btn-secondary" wire:click="batal">Batal</button>
+                              @else
+                                <button class="btn btn-danger" wire:click="setKey({{ $row['id'] }})"
+                                  class="btn btn-danger">Hapus</button>
+                              @endif
+                            </td>
+                          </tr>
+                        @else
+                          <tr>
+                            <td colspan="5" class="text-center">
+                              <input type="file" wire:model.defer="file.{{ $i }}"
+                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="5" class="text-center">
+                              <button class="btn btn-success" wire:click="simpan({{ $i }})">Simpan Kolom
+                                1</button>
+                            </td>
+                          </tr>
+                        @endif
+                      </table>
+                    </td>
+                  @endfor
+                </tr>
+              </table>
             </div>
             <!-- /.card -->
           </div>
+          <x-alert />
+          <x-info />
         </div>
       </div>
   </section>
-  @push('scripts')
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
-    <script src="https://ckeditor.com/apps/ckfinder/3.5.0/ckfinder.js"></script>
-
-    <script>
-      ClassicEditor
-        .create(document.querySelector('#editor1'), {
-          ckfinder: {
-            uploadUrl: '{{ route('file.upload') . '?_token=' . csrf_token() }}',
-            options: {
-              resourceType: 'Images'
-            }
-          }
-        }).then(soal => {
-          soal.ui.focusTracker.on('change:isFocused', (evt, name, isFocused) => {
-            if (!isFocused) {
-              window.livewire.emit('seta', soal.getData());
-            }
-          });
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      ClassicEditor
-        .create(document.querySelector('#editor2'), {
-          ckfinder: {
-            uploadUrl: '{{ route('file.upload') . '?_token=' . csrf_token() }}',
-            options: {
-              resourceType: 'Images'
-            }
-          }
-        }).then(soal => {
-          soal.ui.focusTracker.on('change:isFocused', (evt, name, isFocused) => {
-            if (!isFocused) {
-              window.livewire.emit('setb', soal.getData());
-            }
-          });
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      ClassicEditor
-        .create(document.querySelector('#editor3'), {
-          ckfinder: {
-            uploadUrl: '{{ route('file.upload') . '?_token=' . csrf_token() }}',
-            options: {
-              resourceType: 'Images'
-            }
-          }
-        }).then(soal => {
-          soal.ui.focusTracker.on('change:isFocused', (evt, name, isFocused) => {
-            if (!isFocused) {
-              window.livewire.emit('setc', soal.getData());
-            }
-          });
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      ClassicEditor
-        .create(document.querySelector('#editor4'), {
-          ckfinder: {
-            uploadUrl: '{{ route('file.upload') . '?_token=' . csrf_token() }}',
-            options: {
-              resourceType: 'Images'
-            }
-          }
-        }).then(soal => {
-          soal.ui.focusTracker.on('change:isFocused', (evt, name, isFocused) => {
-            if (!isFocused) {
-              window.livewire.emit('setd', soal.getData());
-            }
-          });
-        })
-        .catch(error => {
-          console.error(error);
-        });
-      ClassicEditor
-        .create(document.querySelector('#editor5'), {
-          ckfinder: {
-            uploadUrl: '{{ route('file.upload') . '?_token=' . csrf_token() }}',
-            options: {
-              resourceType: 'Images'
-            }
-          }
-        }).then(soal => {
-          soal.ui.focusTracker.on('change:isFocused', (evt, name, isFocused) => {
-            if (!isFocused) {
-              window.livewire.emit('sete', soal.getData());
-            }
-          });
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    </script>
-  @endpush
 </div>

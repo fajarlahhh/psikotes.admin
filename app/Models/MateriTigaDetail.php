@@ -9,4 +9,6 @@ class MateriTigaDetail extends Model
 {
   use HasFactory;
   protected $table = "materi_tiga_detail";
+
+  protected $fillable = ['materi_tiga_id', 'a', 'b', 'c', 'd', 'e', 'kunci'];
 }
