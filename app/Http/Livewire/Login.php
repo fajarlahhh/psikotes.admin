@@ -16,14 +16,9 @@ class Login extends Component
       'kataSandi' => 'required',
     ]);
 
-    if (Auth::attempt(['no_peserta' => $this->noPeserta, 'password' => $this->kataSandi], $this->remember)) {
+    if (Auth::attempt(['no_peserta' => $this->noPeserta, 'password' => $this->kataSandi, 'level' => 1], $this->remember)) {
       Auth::logoutOtherDevices($this->kataSandi, 'kata_sandi');
-      if (auth()->user()->level == 1) {
-        redirect('/admin');
-      } else {
-        redirect('/');
-      }
-
+      redirect('/');
     } else {
       session()->flash('danger', 'Kredensial tidak valid');
     }

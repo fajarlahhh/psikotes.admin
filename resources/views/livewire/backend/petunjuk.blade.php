@@ -19,17 +19,13 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              Form
+              <select class="form-control" wire:model="materi">
+                <option value="1">Materi Satu</option>
+                <option value="2">Materi Dua</option>
+                <option value="3">Materi Tiga</option>
+              </select>
             </div>
             <div class="card-body">
-              <div class="form-group">
-                <label>Materi</label>
-                <select class="form-control" wire:model="materi">
-                  <option value="1">Materi Satu</option>
-                  <option value="2">Materi Dua</option>
-                  <option value="3">Materi Tiga</option>
-                </select>
-              </div>
               <div wire:ignore>
                 <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Isi</label>
