@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 23/11/2022 21:18:16
+ Date: 23/11/2022 21:19:30
 */
 
 SET NAMES utf8mb4;
@@ -1850,7 +1850,6 @@ CREATE TABLE `pengguna` (
   `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `uid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `kata_sandi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `level` tinyint DEFAULT NULL,
   `remember_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -1862,8 +1861,8 @@ CREATE TABLE `pengguna` (
 -- Records of pengguna
 -- ----------------------------
 BEGIN;
-INSERT INTO `pengguna` VALUES (1, 'Administrator', 'admin', '$2y$10$0.YO1eP38ur8IQtMWoZwTe8rDMAoog24U610x5/wLWGC0.fnFDUpu', 1, NULL, '2022-09-01 00:00:00', '2022-11-22 19:10:37');
-INSERT INTO `pengguna` VALUES (2, 'Andi Fajar Nugraha', '123456789', '$2y$10$A78If89AYC.C4cpkKT2oNu.hVC4hOmpEcqhpZam3on72Kl6dPruo6', 2, NULL, '2022-09-01 00:00:00', '2022-11-21 18:39:26');
+INSERT INTO `pengguna` VALUES (1, 'Administrator', 'admin', '$2y$10$0.YO1eP38ur8IQtMWoZwTe8rDMAoog24U610x5/wLWGC0.fnFDUpu', NULL, '2022-09-01 00:00:00', '2022-11-22 19:10:37');
+INSERT INTO `pengguna` VALUES (2, 'Andi Fajar Nugraha', '123456789', '$2y$10$A78If89AYC.C4cpkKT2oNu.hVC4hOmpEcqhpZam3on72Kl6dPruo6', NULL, '2022-09-01 00:00:00', '2022-11-21 18:39:26');
 COMMIT;
 
 -- ----------------------------

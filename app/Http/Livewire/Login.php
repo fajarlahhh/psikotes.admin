@@ -16,7 +16,7 @@ class Login extends Component
       'kataSandi' => 'required',
     ]);
 
-    if (Auth::attempt(['uid' => $this->uid, 'password' => $this->kataSandi, 'level' => 1], $this->remember)) {
+    if (Auth::attempt(['uid' => $this->uid, 'password' => $this->kataSandi], $this->remember)) {
       Auth::logoutOtherDevices($this->kataSandi, 'kata_sandi');
       redirect('/');
     } else {
