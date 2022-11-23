@@ -37,15 +37,15 @@
           <div class="tab-content" id="custom-tabs-three-tabContent">
             <div class="tab-pane fade show active" id="custom-tabs-three-satu" role="tabpanel"
               aria-labelledby="custom-tabs-three-satu-tab">
-              <livewire:backend.soal.materisatu />
+              <livewire:soal.materisatu />
             </div>
             <div class="tab-pane fade" id="custom-tabs-three-dua" role="tabpanel"
               aria-labelledby="custom-tabs-three-dua-tab">
-              <livewire:backend.soal.materidua />
+              <livewire:soal.materidua />
             </div>
             <div class="tab-pane fade" id="custom-tabs-three-tiga" role="tabpanel"
               aria-labelledby="custom-tabs-three-tiga-tab">
-              <livewire:backend.soal.materitiga />
+              <livewire:soal.materitiga />
             </div>
           </div>
         </div>
