@@ -1,7 +1,7 @@
 <div>
   <form wire:submit.prevent="submit">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="No. Peserta" wire:model="noPeserta">
+      <input type="text" class="form-control" placeholder="UID" wire:model="uid">
       <div class="input-group-append">
         <div class="input-group-text">
           <span class="fas fa-user"></span>

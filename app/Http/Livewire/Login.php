@@ -7,16 +7,16 @@ use Livewire\Component;
 
 class Login extends Component
 {
-  public $noPeserta, $kataSandi, $remember = false;
+  public $uid, $kataSandi, $remember = false;
 
   public function submit()
   {
     $this->validate([
-      'noPeserta' => 'required',
+      'uid' => 'required',
       'kataSandi' => 'required',
     ]);
 
-    if (Auth::attempt(['no_peserta' => $this->noPeserta, 'password' => $this->kataSandi, 'level' => 1], $this->remember)) {
+    if (Auth::attempt(['uid' => $this->uid, 'password' => $this->kataSandi, 'level' => 1], $this->remember)) {
       Auth::logoutOtherDevices($this->kataSandi, 'kata_sandi');
       redirect('/');
     } else {

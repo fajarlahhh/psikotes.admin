@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : Localhost MySQL
+ Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 50733
- Source Host           : localhost:3306
+ Source Server Version : 80029
+ Source Host           : localhost:55000
  Source Schema         : psikotes
 
  Target Server Type    : MySQL
- Target Server Version : 50733
+ Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 23/11/2022 15:48:22
+ Date: 23/11/2022 21:18:16
 */
 
 SET NAMES utf8mb4;
@@ -21,42 +21,45 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for materi_dua
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_dua`;
-CREATE TABLE `materi_dua`  (
-  `id` bigint(20) NOT NULL,
+CREATE TABLE `materi_dua` (
+  `id` bigint NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of materi_dua
 -- ----------------------------
+BEGIN;
 INSERT INTO `materi_dua` VALUES (1, '2022-11-21 20:03:59', '2022-11-21 20:03:59');
 INSERT INTO `materi_dua` VALUES (2, '2022-11-21 19:40:10', '2022-11-21 19:40:10');
 INSERT INTO `materi_dua` VALUES (3, '2022-11-21 19:47:52', '2022-11-21 19:47:52');
 INSERT INTO `materi_dua` VALUES (4, '2022-11-21 19:47:28', '2022-11-21 19:47:28');
 INSERT INTO `materi_dua` VALUES (5, '2022-11-21 19:50:01', '2022-11-21 19:50:01');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for materi_dua_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_dua_detail`;
-CREATE TABLE `materi_dua_detail`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `materi_dua_id` bigint(20) NOT NULL,
-  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `kunci` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `materi_dua_detail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `materi_dua_id` bigint NOT NULL,
+  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `kunci` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `materi_dua_id`(`materi_dua_id`) USING BTREE,
+  KEY `materi_dua_id` (`materi_dua_id`) USING BTREE,
   CONSTRAINT `materi_dua_detail_ibfk_1` FOREIGN KEY (`materi_dua_id`) REFERENCES `materi_dua` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1083 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=1083 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of materi_dua_detail
 -- ----------------------------
+BEGIN;
 INSERT INTO `materi_dua_detail` VALUES (963, 1, 'Saat sedang bermain game online di handphone, saya merasa marah bila ada orang yang menanyakan sesuatu karena skor saya jadi hilang.', '-', 'STABILITAS EMOSI', '2022-11-21 20:04:03', '2022-11-21 20:04:03');
 INSERT INTO `materi_dua_detail` VALUES (964, 1, 'Saya  pasti  menyumbang  korban  bencana  lebih  besar  jika  nama  saya  turut  dicatat  dan dipublikasikan di media.', '-', 'PROSOSIAL', '2022-11-21 20:04:03', '2022-11-21 20:04:03');
 INSERT INTO `materi_dua_detail` VALUES (965, 1, 'Dalam suatu acara sekolah, saya menunggu orang lain untuk lebih dahulu menyapa agar tidak dikatakan sok akrab.', '-', 'PENYESUAIAN DIRI', '2022-11-21 20:04:03', '2022-11-21 20:04:03');
@@ -177,45 +180,49 @@ INSERT INTO `materi_dua_detail` VALUES (1079, 1, 'Sesulit apapun tugas yang dibe
 INSERT INTO `materi_dua_detail` VALUES (1080, 1, 'Saya yakin dengan pilihan saya sendiri tentang apapun.', '+', 'PENGAMBILAN KEPUTUSAN', '2022-11-21 20:04:03', '2022-11-21 20:04:03');
 INSERT INTO `materi_dua_detail` VALUES (1081, 1, 'Saya tidak ragu berpindah ke kelompok lain, kalau kelompok saya yang lama sudah tidak membutuhkan.', '-', 'LOYALITAS', '2022-11-21 20:04:03', '2022-11-21 20:04:03');
 INSERT INTO `materi_dua_detail` VALUES (1082, 1, 'Saya lebih menyukai mengerjakan tugas secara masing-masing.', '-', 'KERJASAMA', '2022-11-21 20:04:03', '2022-11-21 20:04:03');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for materi_satu
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_satu`;
-CREATE TABLE `materi_satu`  (
-  `id` bigint(20) NOT NULL,
+CREATE TABLE `materi_satu` (
+  `id` bigint NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of materi_satu
 -- ----------------------------
+BEGIN;
 INSERT INTO `materi_satu` VALUES (1, '2022-11-22 19:18:14', '2022-11-22 19:18:14');
 INSERT INTO `materi_satu` VALUES (2, '2022-11-22 19:18:17', '2022-11-22 19:18:17');
 INSERT INTO `materi_satu` VALUES (3, '2022-11-22 20:20:43', '2022-11-22 20:20:43');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for materi_satu_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_satu_detail`;
-CREATE TABLE `materi_satu_detail`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `materi_satu_id` bigint(20) NULL DEFAULT NULL,
-  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `kunci` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `materi_satu_detail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `materi_satu_id` bigint DEFAULT NULL,
+  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `kunci` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `materi_satu_id`(`materi_satu_id`) USING BTREE,
+  KEY `materi_satu_id` (`materi_satu_id`) USING BTREE,
   CONSTRAINT `materi_satu_detail_ibfk_1` FOREIGN KEY (`materi_satu_id`) REFERENCES `materi_satu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of materi_satu_detail
 -- ----------------------------
+BEGIN;
 INSERT INTO `materi_satu_detail` VALUES (16, 1, 'VERBAL\r', '<p>DEPORTASI&nbsp;persamaan&nbsp;kata&nbsp;dari …</p><p>a.&nbsp;Orientasi&nbsp;</p><p>b. Penahanan</p><p>c. Pengecualian</p><p>d.&nbsp;Isolasi</p><p>e. Pengasingan</p>', 'E', '2022-11-22 20:04:44', '2022-11-22 20:04:44');
 INSERT INTO `materi_satu_detail` VALUES (17, 1, 'VERBAL\r', '<p>DISKREDIT persamaan&nbsp;kata dari …</p><p>a.&nbsp;Menghalau</p><p>b.&nbsp;Menepikan</p><p>c.&nbsp;Meminggirkan</p><p>d.&nbsp;Memojokkan</p><p>e.&nbsp;Merusak</p>', 'D', '2022-11-22 20:05:20', '2022-11-22 20:05:20');
 INSERT INTO `materi_satu_detail` VALUES (18, 1, 'VERBAL\r', '<p>MARGIN persamaan&nbsp;dari&nbsp;…</p><p>a.&nbsp;Jeda</p><p>b. Spasi</p><p>c. Sudut</p><p>d.&nbsp;Titik</p><p>e. Batas</p>', 'E', '2022-11-22 20:06:08', '2022-11-22 20:06:08');
@@ -231,48 +238,52 @@ INSERT INTO `materi_satu_detail` VALUES (28, 1, 'VERBAL\r', '<p>DEMOSI lawan kat
 INSERT INTO `materi_satu_detail` VALUES (29, 1, 'LOGIS\r', '<p>Sam adalah siswa yang paling pandai di kelasnya. Joe kalah pandai dibanding Dan, tetapi Dan sama pandainya sama dengan Ari. Ari lebih pandai dari Dono.<br>Kesimpulan paling tepat yang dapat ditarik berdasarkan kedua pernyataan di atas adalah ...</p><p>a. Dan tidak lebih pandai daripada Joe.&nbsp;</p><p>b. Joe tidak kalah pandai dari Sam.</p><p>c. Ari lebih pandai daripada Sam.</p><p>d. Ari lebih pandai daripada Joe.</p><p>e. Dono lebih pandai daripada Dan.</p>', 'D', '2022-11-22 20:18:21', '2022-11-22 20:18:21');
 INSERT INTO `materi_satu_detail` VALUES (30, 1, 'LOGIS\r', '<p>Salah&nbsp;satu&nbsp;syarat&nbsp;diterimanya&nbsp;sebagai&nbsp;Polisi&nbsp;adalah&nbsp;lulus&nbsp;seleksi.&nbsp;Sam&nbsp;adalah&nbsp;salah&nbsp;satu&nbsp;peserta&nbsp;yang akan&nbsp;mengikuti seleksi.</p><p>Kesimpulan&nbsp;paling&nbsp;tepat&nbsp;yang&nbsp;dapat ditarik berdasarkan&nbsp;kedua&nbsp;pernyataan&nbsp;di atas&nbsp;adalah&nbsp;…</p><p>a. &nbsp;Sam belum tentu&nbsp;diterima&nbsp;sebagai Polisi.&nbsp;</p><p>b. &nbsp;Sam tidak&nbsp;lulus seleksi Polisi.</p><p>c. &nbsp;Sam tidak&nbsp;diterima&nbsp;sebagai&nbsp;Polisi.&nbsp;</p><p>d. &nbsp;Sam diterima&nbsp;sebagai Polisi.</p><p>e. &nbsp;Sam mampu&nbsp;melalui seluruh&nbsp;kegiatan&nbsp;seleksi.</p>', 'A', '2022-11-22 20:18:43', '2022-11-22 20:18:43');
 INSERT INTO `materi_satu_detail` VALUES (31, 1, 'LOGIS\r', '<figure class=\"image\"><img src=\"http://psikotes.admin.test/media/Screenshot 2022-11-22 at 9.19.07 PM_1669123155.png\"></figure>', 'E', '2022-11-22 20:19:17', '2022-11-22 20:19:17');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for materi_tiga
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_tiga`;
-CREATE TABLE `materi_tiga`  (
-  `id` bigint(20) NOT NULL,
+CREATE TABLE `materi_tiga` (
+  `id` bigint NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of materi_tiga
 -- ----------------------------
+BEGIN;
 INSERT INTO `materi_tiga` VALUES (1, '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga` VALUES (2, '2022-11-21 18:31:56', '2022-11-21 18:31:56');
 INSERT INTO `materi_tiga` VALUES (3, '2022-11-21 00:00:00', '2022-11-21 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for materi_tiga_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_tiga_detail`;
-CREATE TABLE `materi_tiga_detail`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `materi_tiga_id` bigint(20) NOT NULL,
-  `kolom` tinyint(4) NULL DEFAULT NULL,
-  `a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `b` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `c` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `d` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `e` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+CREATE TABLE `materi_tiga_detail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `materi_tiga_id` bigint NOT NULL,
+  `kolom` tinyint DEFAULT NULL,
+  `a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `b` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `c` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `d` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `e` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `materi_tiga_detail_ibfk_1`(`materi_tiga_id`) USING BTREE,
+  KEY `materi_tiga_detail_ibfk_1` (`materi_tiga_id`) USING BTREE,
   CONSTRAINT `materi_tiga_detail_ibfk_1` FOREIGN KEY (`materi_tiga_id`) REFERENCES `materi_tiga` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of materi_tiga_detail
 -- ----------------------------
+BEGIN;
 INSERT INTO `materi_tiga_detail` VALUES (8, 2, 1, 'K', 'R', 'Z', 'S', 'T', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_detail` VALUES (9, 2, 2, 'O', 'G', 'C', 'P', 'Y', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_detail` VALUES (10, 2, 3, 'X', 'A', 'J', 'B', 'I', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
@@ -303,29 +314,31 @@ INSERT INTO `materi_tiga_detail` VALUES (34, 1, 7, '0', '2', '6', '3', '7\r', '2
 INSERT INTO `materi_tiga_detail` VALUES (35, 1, 8, '5', '7', '8', '1', '3\r', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_detail` VALUES (36, 1, 9, '7', '1', '5', '2', '4\r', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_detail` VALUES (37, 1, 10, '8', '3', '6', '0', '9', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for materi_tiga_sub_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `materi_tiga_sub_detail`;
-CREATE TABLE `materi_tiga_sub_detail`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `materi_tiga_detail_id` bigint(20) NOT NULL,
-  `a` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `b` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `c` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `d` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `kunci` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `materi_tiga_sub_detail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `materi_tiga_detail_id` bigint NOT NULL,
+  `a` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `b` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `c` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `d` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `kunci` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `materi_tiga_id`(`materi_tiga_detail_id`) USING BTREE,
+  KEY `materi_tiga_id` (`materi_tiga_detail_id`) USING BTREE,
   CONSTRAINT `materi_tiga_sub_detail_ibfk_1` FOREIGN KEY (`materi_tiga_detail_id`) REFERENCES `materi_tiga_detail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1510 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=1510 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of materi_tiga_sub_detail
 -- ----------------------------
+BEGIN;
 INSERT INTO `materi_tiga_sub_detail` VALUES (9, 8, 'R', 'K', 'S', 'T', 'c', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_sub_detail` VALUES (10, 8, 'Z', 'R', 'S', 'K', 'e', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_sub_detail` VALUES (11, 8, 'K', 'R', 'Z', 'T', 'd', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
@@ -1826,101 +1839,109 @@ INSERT INTO `materi_tiga_sub_detail` VALUES (1506, 22, 'Ϡ', 'Җ', 'ʨ', 'Ξ', '
 INSERT INTO `materi_tiga_sub_detail` VALUES (1507, 22, 'ʨ', '҂', 'Ξ', 'Ϡ', 'd\r', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_sub_detail` VALUES (1508, 22, 'Җ', 'ʨ', 'Ξ', '҂', 'c\r', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
 INSERT INTO `materi_tiga_sub_detail` VALUES (1509, 22, '҂', 'ʨ', 'Җ', 'Ϡ', 'b', '2022-11-21 00:00:00', '2022-11-21 00:00:00');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for pengguna
 -- ----------------------------
 DROP TABLE IF EXISTS `pengguna`;
-CREATE TABLE `pengguna`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `no_peserta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `kata_sandi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `level` tinyint(4) NULL DEFAULT NULL,
-  `remember_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `pengguna` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `uid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `kata_sandi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `level` tinyint DEFAULT NULL,
+  `remember_token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `no_peserta`(`no_peserta`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  UNIQUE KEY `no_peserta` (`uid`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of pengguna
 -- ----------------------------
+BEGIN;
 INSERT INTO `pengguna` VALUES (1, 'Administrator', 'admin', '$2y$10$0.YO1eP38ur8IQtMWoZwTe8rDMAoog24U610x5/wLWGC0.fnFDUpu', 1, NULL, '2022-09-01 00:00:00', '2022-11-22 19:10:37');
 INSERT INTO `pengguna` VALUES (2, 'Andi Fajar Nugraha', '123456789', '$2y$10$A78If89AYC.C4cpkKT2oNu.hVC4hOmpEcqhpZam3on72Kl6dPruo6', 2, NULL, '2022-09-01 00:00:00', '2022-11-21 18:39:26');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for petunjuk
 -- ----------------------------
 DROP TABLE IF EXISTS `petunjuk`;
-CREATE TABLE `petunjuk`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `materi` int(11) NULL DEFAULT NULL,
-  `isi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `operator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `petunjuk` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `materi` int DEFAULT NULL,
+  `isi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `operator` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  UNIQUE INDEX `materi`(`materi`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+  UNIQUE KEY `materi` (`materi`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of petunjuk
 -- ----------------------------
+BEGIN;
 INSERT INTO `petunjuk` VALUES (1, 1, '<p><strong>PETUNJUK PENGERJAAN&nbsp;</strong></p><p><strong>&nbsp;</strong></p><p>Sebelum mengerjakan tes, bacalah petunjuk pengerjaan tes ini dengan saksama.</p><p>Anda diminta untuk membaca setiap <strong>Soal</strong> yang ada, lalu pilih satu jawab dari lima pilihan jawaban yang menurut Anda paling benar. Adapun petunjuk untuk mengerjakan soal berpedoman pada beberapa tipe soal yang dicontohkan berikut ini ;</p><figure class=\"table\"><table><tbody><tr><td><strong>Contoh&nbsp; 1.</strong></td><td><p>Mudah&nbsp; =&nbsp; ……..............&nbsp;</p><p>a) Gampang&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;b) Buruk&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;c) Sulit&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;d) Sedih&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;e) Jelek</p></td></tr></tbody></table></figure><p>Pada tipe soal ini Anda diminta untuk mencari satu kata dari pilihan jawaban yang <strong>mempunyai arti sama&nbsp;</strong>atau <strong>yang paling dekat dengan arti kata soal</strong>. Pada contoh soal diatas terdapat kata <i>”Mudah”</i> dan pilihan jawaban yang memiliki arti sama dengan kata mudah adalah kata ”<i>Gampang</i>”&nbsp;maka klik huruf&nbsp; <strong>a</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270411.png\"></figure><figure class=\"table\"><table><tbody><tr><td><strong>Contoh 2.</strong></td><td><p>&nbsp; &nbsp; &nbsp;Keras&nbsp; X&nbsp; &nbsp;……..............</p><p>&nbsp; &nbsp; &nbsp;a) Batu&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b) Lembut&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; c) Licin&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;d) Lemas&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; e) Kaku</p></td></tr></tbody></table></figure><p>Pada tipe soal ini Anda diminta untuk mencari satu kata dari pilihan jawaban yang <strong>mempunyai arti berlawanan&nbsp;</strong>atau <strong>yang paling jauh dengan arti kata soal</strong>. Pada contoh soal diatas terdapat kata \"<i>Keras”</i> dan pilihan jawaban yang memiliki arti berlawanan dengan kata keras adalah kata ”<i>Lembut</i>”,&nbsp;maka klik huruf&nbsp; <strong>b</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270419.png\"></figure><figure class=\"table\"><table><tbody><tr><td><strong>Contoh 3.</strong></td><td><p>Basah : Kering&nbsp; &nbsp;= ………&nbsp; :&nbsp; ……….</p><p>a)Baik, Buruk&nbsp; &nbsp; &nbsp;b)Basi, Busuk&nbsp; &nbsp;c)Bagus, Indah&nbsp; &nbsp;d)Tipis, Rentan&nbsp; &nbsp;e)Halus, Lembut</p></td></tr></tbody></table></figure><p>Pada tipe soal ini Anda akan menemui <strong>pasangan kata yang memiliki hubungan</strong>, dan Anda diminta untuk <strong>mencari jawaban pasangan kata yang memiliki hubungan yang sama dengan pasangan kata pada soal</strong>. Pada contoh diatas, hubungan dari kata ”<i>Basah”</i> dan <i>”Kering”</i> adalah lawan katanya, maka dari pilihan jawaban yang memiliki hubungan lawan kata adalah <i>”Baik”&nbsp;</i>dan<i> ”Buruk”.</i> Sesuai dengan pilihan jawaban, maka klik&nbsp;huruf&nbsp; <strong>a</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270427.png\"></figure><figure class=\"table\"><table><tbody><tr><td><strong>Contoh 4.</strong></td><td><p>Semua pelamar kerja adalah lulusan S1 .</p><p>Sarjana pasti datang dengan membawa ijazahnya.</p><p>Maka kesimpulan yang dapat ditarik dari kedua kalimat diatas adalah .........</p><p>a) Ada pelamar kerja yang berijazah SMA&nbsp; &nbsp; &nbsp;</p><p>b) Semua pelamar membawa ijazah S1.</p><p>c) Semua pelamar tidak diharuskan membawa ijazah.</p><p>d) Pelamar kerja minimal membawa ijazahnya.&nbsp;</p><p>e) Tidak ada kesimpulan</p></td></tr></tbody></table></figure><p>Pada tipe soal ini, terdapat dua buah kalimat. Tugas Anda adalah <strong>mencari kesimpulan yang paling tepat dari kedua kalimat tersebut</strong>. Pada contoh soal diatas maka jawaban yang benar adalah ”Semua pelamar membawa ijazah S1”, sehingga&nbsp;klik huruf&nbsp; <strong>b</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270439.png\"></figure><figure class=\"table\"><table><tbody><tr><td><strong>Contoh 5.</strong></td><td><p>3 x 5 - 2 = ……</p><p>a) 10&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; b) 11&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;c) 12&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d) 13&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;e) 15</p></td></tr></tbody></table></figure><p>Pada tipe soal ini Anda akan menemui <strong>perhitungan matematika sederhana</strong>. Anda diminta untuk <strong>mencari angka yang tepat</strong> dari pilihan jawaban untuk <strong>melengkapi perhitungan soal sehingga menjadi perhitungan yang benar</strong>. Pada contoh soal diatas, angka 13 adalah angka yang tepat dari hasil perhitungan matematika tersebut. Maka&nbsp;klik huruf&nbsp; <strong>d</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270464.png\"></figure><figure class=\"table\"><table><tbody><tr><td><strong>Contoh 6.</strong></td><td><p>Bila Orin membeli sepasang sepatu seharga Rp.50.000,-, berapakah yang harus Orin bayarkan jika ia membeli 3 pasang sepatu?</p><p>a)Rp.50.000,-&nbsp; &nbsp; &nbsp;b)Rp.75.000,-&nbsp; &nbsp;c)Rp.100.000,-&nbsp; &nbsp; d)Rp.120.000,-&nbsp; &nbsp; e)Rp.150.000,-</p></td></tr></tbody></table></figure><p>Pada tipe soal ini Anda akan menemui <strong>soal cerita matematika sederhana</strong>, dan Anda diminta untuk <strong>mencari jawaban yang benar dari perhitungan soal tersebut</strong>. Pada contoh soal cerita diatas, maka perhitungannya adalah Rp. 50.000,- x 3 pasang = Rp. 150.000,-. Sesuai dengan pilihan jawaban, maka klik huruf&nbsp;<strong>e</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270471.png\"></figure><figure class=\"table\"><table><tbody><tr><td><strong>Contoh 7.</strong></td><td><p><img src=\"http://ujian.test/media/image_1666270478.png\"></p><p>a) 6, 8&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;b) 7, 9&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;c) 6, 10&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; d) 7, 8&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; e) 6, 9</p></td></tr></tbody></table></figure><p>Pada tipe soal ini, terdapat sebuah gambar deret angka dan tugas anda adalah <strong>melengkapi kotak X dan Y tersebut dengan angka yang tepat sesuai dengan pola yang ada</strong>.&nbsp;</p><p><strong>Pada tipe gambar ini dapat berisi jenis deret angka, huruf maupun kombinasi diantara keduanya dengan tugas melengkapi kotak X dan Y maupun kotak titik titik untuk diisi dengan jawaban yang tepat.</strong></p><p>Pada contoh soal diatas pola deret angka atas (kotak X) antara satu angka dengan lainnya adalah +1, dan pada pola deret angka bawah (kotak Y) adalah +2, maka jawaban yang tepat untuk mengisi kotak X dan Y berturut -turut adalah 6, 12. Oleh karena itu&nbsp;klik huruf&nbsp; <strong>c</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270503.png\"></figure><figure class=\"table\"><table><tbody><tr><td><p><strong>Contoh 8.</strong></p><p>&nbsp;</p></td><td><img src=\"http://ujian.test/media/image_1666270539.png\"></td></tr></tbody></table></figure><p>Pada tipe soal ini, terdapat sebuah pola gambar dimana pola gambar kiri dan kanan memiliki persamaan pola pengerjaannya. Tugas anda adalah <strong>melengkapi kotak tanda tanya tersebut dengan gambar yang tepat sehingga menjadi pola yang tepat</strong>.&nbsp;</p><p><strong>Pada tipe gambar ini dapat berisi jenis pola gambar maupun pola angka.</strong></p><p>Pada contoh soal diatas pola gambar kiri adalah gambar dengan jumlah bertambah 1 dengan bentuk yang sama, maka jawaban yang tepat untuk mengisi kotak tanda tanya tersebut adalah dengan bentuk yang sama dan jumlah berambah satu (segitiga berjumlah 4). Oleh karena itu&nbsp;maka klik huruf&nbsp; <strong>c</strong>.</p><figure class=\"image\"><img src=\"http://ujian.test/media/image_1666270515.png\"></figure><p><strong>Apabila Anda telah selesai, periksalah kembali jawaban Anda.&nbsp;</strong></p><p><strong>SELAMAT MENGERJAKAN</strong></p>', NULL, '2022-10-20 12:56:43', '2022-10-20 12:57:08');
 INSERT INTO `petunjuk` VALUES (2, 2, '<p><strong>PETUNJUK MENJAWAB</strong></p><p>Bacalah&nbsp;petunjuk cara menjawab&nbsp;dengan&nbsp;saksama.</p><p>Pada&nbsp;tes&nbsp;ini&nbsp;anda&nbsp;akan&nbsp;dihadapkan dengan beberapa persoalan/pernyataan<strong>.&nbsp;</strong>Anda disarankan&nbsp;membaca&nbsp;pernyataan&nbsp;dalam&nbsp;setiap&nbsp;soal dan&nbsp;menjawabnya&nbsp;dengan&nbsp;segera,&nbsp;secara&nbsp;spontan&nbsp;dan&nbsp;jujur&nbsp;sesuai&nbsp;dengan&nbsp;apa&nbsp;yang&nbsp;anda&nbsp;anggap&nbsp;paling&nbsp;sesuai&nbsp;dengan diri anda.&nbsp;</p><p><strong>Berikut adalah cara&nbsp;menjawab soal</strong>:</p><p><i>Klik <strong>A </strong>bila&nbsp;anda&nbsp;merasa pernyataan&nbsp;tersebut&nbsp;<strong>SANGAT TIDAK SESUAI&nbsp;</strong>dengan&nbsp;diri anda.</i></p><p><i>Klik <strong>B </strong>bila&nbsp;anda&nbsp;merasa pernyataan&nbsp;tersebut&nbsp;<strong>TIDAK SESUAI&nbsp;</strong>dengan&nbsp;diri anda.</i></p><p><i>Klik <strong>C&nbsp;</strong>bila&nbsp;anda&nbsp;merasa pernyataan&nbsp;tersebut&nbsp;<strong>SESUAI&nbsp;</strong>dengan diri anda.</i></p><p><i>Klik <strong>D&nbsp;</strong>bila&nbsp;anda&nbsp;merasa pernyataan&nbsp;tersebut&nbsp;<strong>SANGAT SESUAI&nbsp;</strong>dengan&nbsp;diri anda.</i></p><p><strong>CONTOH :</strong></p><figure class=\"table\"><table><tbody><tr><td>&nbsp;</td><td><strong>NO</strong></td><td>&nbsp;</td><td><strong>PERNYATAAN</strong></td><td>&nbsp;</td></tr><tr><td colspan=\"5\">1.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dengan&nbsp;kemampuan&nbsp;yang&nbsp;saya&nbsp;miliki,&nbsp;saya&nbsp;turut&nbsp;serta&nbsp;membantu&nbsp;pemerintah&nbsp;dalam&nbsp;penanganan pandemi Covid-19&nbsp;di wilayah&nbsp;saya.</td></tr></tbody></table></figure><p>Jika&nbsp;anda&nbsp;merasa&nbsp;bahwa&nbsp;<strong>Pernyataan&nbsp;</strong>dalam&nbsp;soal&nbsp;tersebut&nbsp;<strong>SESUAI&nbsp;</strong>dengan&nbsp;diri&nbsp;anda,&nbsp;maka&nbsp;klik&nbsp;<strong>jawaban&nbsp;C </strong>dan otomatis jawaban akan tersimpan dan tidak bisa dirubah serta otomatis akan tampil pernyataan nomor berikujtnya. Anda tidak bisa mengerjakan nomor berikutnya sebelum anda menjawab.</p><p><strong>“Selamat&nbsp;Bekerja”</strong></p>', NULL, '2022-10-20 13:02:08', '2022-10-20 13:02:26');
 INSERT INTO `petunjuk` VALUES (3, 3, '<p>PETUNJUK PENGERJAAN</p><ul><li>&nbsp;SUBTES INI TERDIRI DARI 10 KOLOM DENGAN MASING-MASING KOLOM DIBERIKAN WAKTU 1 MENIT UNTUK MENJAWAB.</li><li>TUGAS ANDA ADALAH MENCARI ANGKA/HURUF/SIMBOL YANG HILANG/TIDAK ADA PADA PERSOALAN PADA PILIHAN JAWABAN YANG ADA.&nbsp;</li><li>CARA MENJAWABNYA, DENGAN MENEKAN PILIHAN JAWABAN YG DIANGGAP BENAR DAN AKAN LANGSUNG BERPINDAH KE NOMOR SOAL BERIKUTNYA.&nbsp;</li><li>PADA SUBTES INI DIBUTUHKAN KECEPATAN DAN KECERMATAN DALAM MENJAWAB.&nbsp;</li><li>ADA INDIKATOR WAKTU DAN KOLOM DI LAYAR MONITOR MASING-MASING PESERTA</li></ul>', NULL, '2022-10-20 13:02:49', '2022-10-20 13:02:54');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja`;
-CREATE TABLE `ruang_kerja`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT ' ',
-  `deskripsi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `materi_satu_id` bigint(20) NULL DEFAULT NULL,
-  `materi_dua_id` bigint(20) NULL DEFAULT NULL,
-  `materi_tiga_id` bigint(20) NULL DEFAULT NULL,
-  `waktu_materi_satu` int(11) NULL DEFAULT NULL,
-  `waktu_materi_dua` int(11) NULL DEFAULT NULL,
-  `waktu_materi_tiga` int(11) NULL DEFAULT NULL,
+CREATE TABLE `ruang_kerja` (
+  `id` bigint NOT NULL AUTO_INCREMENT COMMENT ' ',
+  `deskripsi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `materi_satu_id` bigint DEFAULT NULL,
+  `materi_dua_id` bigint DEFAULT NULL,
+  `materi_tiga_id` bigint DEFAULT NULL,
+  `waktu_materi_satu` int DEFAULT NULL,
+  `waktu_materi_dua` int DEFAULT NULL,
+  `waktu_materi_tiga` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `materi_dua_id`(`materi_dua_id`) USING BTREE,
-  INDEX `materi_tiga_id`(`materi_tiga_id`) USING BTREE,
-  INDEX `ruang_kerja_ibfk_1`(`materi_satu_id`) USING BTREE,
+  KEY `materi_dua_id` (`materi_dua_id`) USING BTREE,
+  KEY `materi_tiga_id` (`materi_tiga_id`) USING BTREE,
+  KEY `ruang_kerja_ibfk_1` (`materi_satu_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_ibfk_1` FOREIGN KEY (`materi_satu_id`) REFERENCES `materi_satu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ruang_kerja_ibfk_2` FOREIGN KEY (`materi_dua_id`) REFERENCES `materi_dua` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ruang_kerja_ibfk_3` FOREIGN KEY (`materi_tiga_id`) REFERENCES `materi_tiga` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 54 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja
 -- ----------------------------
+BEGIN;
 INSERT INTO `ruang_kerja` VALUES (53, 'Deskripsi-2022-11-23 10:11:04', 1, 1, 2, 120, 120, 120, '2022-11-23 10:43:04', '2022-11-23 10:43:04');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja_materi_dua
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja_materi_dua`;
-CREATE TABLE `ruang_kerja_materi_dua`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ruang_kerja_id` bigint(20) NOT NULL,
-  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `kunci` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `ruang_kerja_materi_dua` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ruang_kerja_id` bigint NOT NULL,
+  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `kunci` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `ruang_kerja_id`(`ruang_kerja_id`) USING BTREE,
+  KEY `ruang_kerja_id` (`ruang_kerja_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_materi_dua_ibfk_1` FOREIGN KEY (`ruang_kerja_id`) REFERENCES `ruang_kerja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 961 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=961 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja_materi_dua
 -- ----------------------------
+BEGIN;
 INSERT INTO `ruang_kerja_materi_dua` VALUES (841, 53, 'STABILITAS EMOSI', 'Saat sedang bermain game online di handphone, saya merasa marah bila ada orang yang menanyakan sesuatu karena skor saya jadi hilang.', '-', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_dua` VALUES (842, 53, 'PROSOSIAL', 'Saya  pasti  menyumbang  korban  bencana  lebih  besar  jika  nama  saya  turut  dicatat  dan dipublikasikan di media.', '-', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_dua` VALUES (843, 53, 'PENYESUAIAN DIRI', 'Dalam suatu acara sekolah, saya menunggu orang lain untuk lebih dahulu menyapa agar tidak dikatakan sok akrab.', '-', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
@@ -2041,27 +2062,29 @@ INSERT INTO `ruang_kerja_materi_dua` VALUES (957, 53, 'MOTIF BERPRESTASI', 'Sesu
 INSERT INTO `ruang_kerja_materi_dua` VALUES (958, 53, 'PENGAMBILAN KEPUTUSAN', 'Saya yakin dengan pilihan saya sendiri tentang apapun.', '+', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_dua` VALUES (959, 53, 'LOYALITAS', 'Saya tidak ragu berpindah ke kelompok lain, kalau kelompok saya yang lama sudah tidak membutuhkan.', '-', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_dua` VALUES (960, 53, 'KERJASAMA', 'Saya lebih menyukai mengerjakan tugas secara masing-masing.', '-', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja_materi_satu
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja_materi_satu`;
-CREATE TABLE `ruang_kerja_materi_satu`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ruang_kerja_id` bigint(20) NULL DEFAULT NULL,
-  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `kunci` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `ruang_kerja_materi_satu` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ruang_kerja_id` bigint DEFAULT NULL,
+  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `kunci` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `materi_satu_id`(`ruang_kerja_id`) USING BTREE,
+  KEY `materi_satu_id` (`ruang_kerja_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_materi_satu_ibfk_1` FOREIGN KEY (`ruang_kerja_id`) REFERENCES `ruang_kerja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 121 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja_materi_satu
 -- ----------------------------
+BEGIN;
 INSERT INTO `ruang_kerja_materi_satu` VALUES (106, 53, 'VERBAL\r', '<p>DEPORTASI&nbsp;persamaan&nbsp;kata&nbsp;dari …</p><p>a.&nbsp;Orientasi&nbsp;</p><p>b. Penahanan</p><p>c. Pengecualian</p><p>d.&nbsp;Isolasi</p><p>e. Pengasingan</p>', 'E', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_satu` VALUES (107, 53, 'VERBAL\r', '<p>DISKREDIT persamaan&nbsp;kata dari …</p><p>a.&nbsp;Menghalau</p><p>b.&nbsp;Menepikan</p><p>c.&nbsp;Meminggirkan</p><p>d.&nbsp;Memojokkan</p><p>e.&nbsp;Merusak</p>', 'D', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_satu` VALUES (108, 53, 'VERBAL\r', '<p>MARGIN persamaan&nbsp;dari&nbsp;…</p><p>a.&nbsp;Jeda</p><p>b. Spasi</p><p>c. Sudut</p><p>d.&nbsp;Titik</p><p>e. Batas</p>', 'E', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
@@ -2077,30 +2100,32 @@ INSERT INTO `ruang_kerja_materi_satu` VALUES (117, 53, 'VERBAL\r', '<p>DEMOSI la
 INSERT INTO `ruang_kerja_materi_satu` VALUES (118, 53, 'LOGIS\r', '<p>Sam adalah siswa yang paling pandai di kelasnya. Joe kalah pandai dibanding Dan, tetapi Dan sama pandainya sama dengan Ari. Ari lebih pandai dari Dono.<br>Kesimpulan paling tepat yang dapat ditarik berdasarkan kedua pernyataan di atas adalah ...</p><p>a. Dan tidak lebih pandai daripada Joe.&nbsp;</p><p>b. Joe tidak kalah pandai dari Sam.</p><p>c. Ari lebih pandai daripada Sam.</p><p>d. Ari lebih pandai daripada Joe.</p><p>e. Dono lebih pandai daripada Dan.</p>', 'D', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_satu` VALUES (119, 53, 'LOGIS\r', '<p>Salah&nbsp;satu&nbsp;syarat&nbsp;diterimanya&nbsp;sebagai&nbsp;Polisi&nbsp;adalah&nbsp;lulus&nbsp;seleksi.&nbsp;Sam&nbsp;adalah&nbsp;salah&nbsp;satu&nbsp;peserta&nbsp;yang akan&nbsp;mengikuti seleksi.</p><p>Kesimpulan&nbsp;paling&nbsp;tepat&nbsp;yang&nbsp;dapat ditarik berdasarkan&nbsp;kedua&nbsp;pernyataan&nbsp;di atas&nbsp;adalah&nbsp;…</p><p>a. &nbsp;Sam belum tentu&nbsp;diterima&nbsp;sebagai Polisi.&nbsp;</p><p>b. &nbsp;Sam tidak&nbsp;lulus seleksi Polisi.</p><p>c. &nbsp;Sam tidak&nbsp;diterima&nbsp;sebagai&nbsp;Polisi.&nbsp;</p><p>d. &nbsp;Sam diterima&nbsp;sebagai Polisi.</p><p>e. &nbsp;Sam mampu&nbsp;melalui seluruh&nbsp;kegiatan&nbsp;seleksi.</p>', 'A', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_satu` VALUES (120, 53, 'LOGIS\r', '<figure class=\"image\"><img src=\"http://psikotes.admin.test/media/Screenshot 2022-11-22 at 9.19.07 PM_1669123155.png\"></figure>', 'E', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja_materi_tiga
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja_materi_tiga`;
-CREATE TABLE `ruang_kerja_materi_tiga`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ruang_kerja_id` bigint(20) NOT NULL,
-  `kolom` tinyint(4) NULL DEFAULT NULL,
-  `a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `b` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `c` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `d` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `e` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+CREATE TABLE `ruang_kerja_materi_tiga` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ruang_kerja_id` bigint NOT NULL,
+  `kolom` tinyint DEFAULT NULL,
+  `a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `b` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `c` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `d` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `e` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `ruang_kerja_id`(`ruang_kerja_id`) USING BTREE,
+  KEY `ruang_kerja_id` (`ruang_kerja_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_materi_tiga_ibfk_1` FOREIGN KEY (`ruang_kerja_id`) REFERENCES `ruang_kerja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 53 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja_materi_tiga
 -- ----------------------------
+BEGIN;
 INSERT INTO `ruang_kerja_materi_tiga` VALUES (43, 53, 1, 'K', 'R', 'Z', 'S', 'T', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga` VALUES (44, 53, 2, 'O', 'G', 'C', 'P', 'Y', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga` VALUES (45, 53, 3, 'X', 'A', 'J', 'B', 'I', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
@@ -2111,29 +2136,31 @@ INSERT INTO `ruang_kerja_materi_tiga` VALUES (49, 53, 7, 'O', 'G', 'C', 'P', 'Y'
 INSERT INTO `ruang_kerja_materi_tiga` VALUES (50, 53, 8, 'X', 'A', 'J', 'B', 'I', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga` VALUES (51, 53, 9, 'E', 'F', 'Q', 'H', 'L', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga` VALUES (52, 53, 10, 'V', 'N', 'M', 'W', 'U', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja_materi_tiga_detail
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja_materi_tiga_detail`;
-CREATE TABLE `ruang_kerja_materi_tiga_detail`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ruang_kerja_materi_tiga_id` bigint(20) NOT NULL,
-  `a` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `b` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `c` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `d` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `kunci` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
+CREATE TABLE `ruang_kerja_materi_tiga_detail` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ruang_kerja_materi_tiga_id` bigint NOT NULL,
+  `a` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `b` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `c` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `d` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `kunci` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `materi_tiga_id`(`ruang_kerja_materi_tiga_id`) USING BTREE,
+  KEY `materi_tiga_id` (`ruang_kerja_materi_tiga_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_materi_tiga_detail_ibfk_1` FOREIGN KEY (`ruang_kerja_materi_tiga_id`) REFERENCES `ruang_kerja_materi_tiga` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2501 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=2501 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja_materi_tiga_detail
 -- ----------------------------
+BEGIN;
 INSERT INTO `ruang_kerja_materi_tiga_detail` VALUES (2001, 43, 'R', 'K', 'S', 'T', 'c', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga_detail` VALUES (2002, 43, 'Z', 'R', 'S', 'K', 'e', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga_detail` VALUES (2003, 43, 'K', 'R', 'Z', 'T', 'd', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
@@ -2634,29 +2661,31 @@ INSERT INTO `ruang_kerja_materi_tiga_detail` VALUES (2497, 52, 'M', 'V', 'U', 'N
 INSERT INTO `ruang_kerja_materi_tiga_detail` VALUES (2498, 52, 'U', 'W', 'N', 'M', 'a', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga_detail` VALUES (2499, 52, 'V', 'U', 'N', 'W', 'c', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_materi_tiga_detail` VALUES (2500, 52, 'W', 'U', 'V', 'M', 'b', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja_peserta
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja_peserta`;
-CREATE TABLE `ruang_kerja_peserta`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ruang_kerja_id` bigint(20) NULL DEFAULT NULL,
-  `nomor` bigint(20) NULL DEFAULT NULL,
-  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `kata_sandi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
-  `kata_sandi_show` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL,
+CREATE TABLE `ruang_kerja_peserta` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ruang_kerja_id` bigint DEFAULT NULL,
+  `nomor` bigint DEFAULT NULL,
+  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `kata_sandi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `kata_sandi_show` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `ruang_kerja_id`(`ruang_kerja_id`) USING BTREE,
-  UNIQUE INDEX `nomor`(`nomor`) USING BTREE,
+  UNIQUE KEY `nomor` (`nomor`) USING BTREE,
+  KEY `ruang_kerja_id` (`ruang_kerja_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_peserta_ibfk_1` FOREIGN KEY (`ruang_kerja_id`) REFERENCES `ruang_kerja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 1956 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=1956 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja_peserta
 -- ----------------------------
+BEGIN;
 INSERT INTO `ruang_kerja_peserta` VALUES (1636, 53, 2211231011041, 'Andi', '$2y$10$uG4vn3l0oObBNYAzNkVWo.xClyULBngZdMWykjOCO73QVZ15//4vm', '101104', '2022-11-23 10:43:04', '2022-11-23 12:51:23');
 INSERT INTO `ruang_kerja_peserta` VALUES (1637, 53, 2211231011042, 'Fajar', '$2y$10$DBqSMBnXR0DMJV391oDQouH6iyelp9UJjvBK82/7sZaON2g4Taqqa', '101104', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
 INSERT INTO `ruang_kerja_peserta` VALUES (1638, 53, 2211231011043, 'Nugraha', '$2y$10$Wqkuc.kE64k3q9dw7Ga/.unSTvuRNtswdlCr//7HuHMgijQP6Dfaq', '101104', '2022-11-23 10:43:04', '2022-11-23 10:43:04');
@@ -2665,7 +2694,7 @@ INSERT INTO `ruang_kerja_peserta` VALUES (1640, 53, 2211231011045, 'Fajar', '$2y
 INSERT INTO `ruang_kerja_peserta` VALUES (1641, 53, 2211231011046, 'Nugraha', '$2y$10$0Szdcy4i4L3SR.eeMuM94O4SKeT1Iqu0jRPRKtyTmlee6P4DpBZ76', '101105', '2022-11-23 10:43:05', '2022-11-23 10:43:05');
 INSERT INTO `ruang_kerja_peserta` VALUES (1642, 53, 2211231011057, 'Andi', '$2y$10$Kvk1L4qnLvda3K5F3twqDOBBVIj7HdnjV.uLa.KsFAcuf..f4NKc2', '101105', '2022-11-23 10:43:05', '2022-11-23 10:43:05');
 INSERT INTO `ruang_kerja_peserta` VALUES (1643, 53, 2211231011058, 'Fajar', '$2y$10$zHz1o46BCKcavI62awIvk.5izjPSKrz48OiIzVv8I9CLQAx8G6itG', '101105', '2022-11-23 10:43:05', '2022-11-23 10:43:05');
-INSERT INTO `ruang_kerja_peserta` VALUES (1644, 53, 2211231011059, 'Nugraha', '$2y$10$cO/sKko1sMP/02mA80OywOWyVULEbxF3v8LG2nU3BsiHwuy1p7wri', '101105', '2022-11-23 10:43:05', '2022-11-23 10:43:05');
+INSERT INTO `ruang_kerja_peserta` VALUES (1644, 53, 2211231011059, 'Nugraha', '$2y$10$1Ka5d2wYqAdqzwrdbaJNquf.k8EJiKoLeyGgzfes2S0q0y4YoKpy.', '101105', '2022-11-23 10:43:05', '2022-11-23 18:05:52');
 INSERT INTO `ruang_kerja_peserta` VALUES (1645, 53, 22112310110510, 'Andi', '$2y$10$FAtnTA23BUQxc6bfaMxxnuGGJLy77gq5YUs0yKk3Bi.RXiSTqXMuO', '101105', '2022-11-23 10:43:05', '2022-11-23 10:43:05');
 INSERT INTO `ruang_kerja_peserta` VALUES (1646, 53, 22112310110511, 'Fajar', '$2y$10$f5IV64YV9LM1Jw9.EnPvietZaC11/qym6bgOPLO0miObno02OJ1YK', '101105', '2022-11-23 10:43:05', '2022-11-23 10:43:05');
 INSERT INTO `ruang_kerja_peserta` VALUES (1647, 53, 22112310110512, 'Nugraha', '$2y$10$L7wMBT7y7vO.DV7tyZSm5.0U/6MF/j7e.zOHv0Vhb22JPI80bAjKO', '101105', '2022-11-23 10:43:05', '2022-11-23 10:43:05');
@@ -2977,92 +3006,346 @@ INSERT INTO `ruang_kerja_peserta` VALUES (1952, 53, 221123101119317, 'Andi', '$2
 INSERT INTO `ruang_kerja_peserta` VALUES (1953, 53, 221123101119318, 'Fajar', '$2y$10$MjXYrTe8e4bjYnM/1Gm5xuZPOrwJT66fDj743Vbff3XxsNMA9saaK', '101119', '2022-11-23 10:43:19', '2022-11-23 10:43:19');
 INSERT INTO `ruang_kerja_peserta` VALUES (1954, 53, 221123101119319, 'Nugraha', '$2y$10$NnJB5WmRj2oInsqz.QuBveQCS3rXSuDZ9iDeILVJzi9rp4G/MW7aq', '101119', '2022-11-23 10:43:19', '2022-11-23 10:43:19');
 INSERT INTO `ruang_kerja_peserta` VALUES (1955, 53, 221123101119320, 'Nugraha', '$2y$10$5z1I9.bGVx8nC1nzl7qAZuB/vJJkiWt6e2BAgKV0TJ5XMWtpeooUi', '101119', '2022-11-23 10:43:19', '2022-11-23 10:43:19');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja_peserta_jawaban
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja_peserta_jawaban`;
-CREATE TABLE `ruang_kerja_peserta_jawaban`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ruang_kerja_peserta_id` bigint(20) NULL DEFAULT NULL,
-  `jawaban` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
-  `ruang_kerja_materi_satu_id` bigint(20) NULL DEFAULT NULL,
-  `ruang_kerja_materi_dua_id` bigint(20) NULL DEFAULT NULL,
-  `ruang_kerja_materi_tiga_detail_id` bigint(20) NULL DEFAULT NULL,
-  `benar` tinyint(4) NULL DEFAULT NULL,
+CREATE TABLE `ruang_kerja_peserta_jawaban` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ruang_kerja_peserta_id` bigint DEFAULT NULL,
+  `jawaban` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ruang_kerja_materi_satu_id` bigint DEFAULT NULL,
+  `ruang_kerja_materi_dua_id` bigint DEFAULT NULL,
+  `ruang_kerja_materi_tiga_detail_id` bigint DEFAULT NULL,
+  `nilai` tinyint DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `ruang_kerja_materi_satu_id`(`ruang_kerja_materi_satu_id`) USING BTREE,
-  INDEX `ruang_kerja_materi_dua_id`(`ruang_kerja_materi_dua_id`) USING BTREE,
-  INDEX `ruang_kerja_materi_tiga_detail_id`(`ruang_kerja_materi_tiga_detail_id`) USING BTREE,
-  INDEX `ruang_kerja_peserta_id`(`ruang_kerja_peserta_id`) USING BTREE,
+  KEY `ruang_kerja_materi_satu_id` (`ruang_kerja_materi_satu_id`) USING BTREE,
+  KEY `ruang_kerja_materi_dua_id` (`ruang_kerja_materi_dua_id`) USING BTREE,
+  KEY `ruang_kerja_materi_tiga_detail_id` (`ruang_kerja_materi_tiga_detail_id`) USING BTREE,
+  KEY `ruang_kerja_peserta_id` (`ruang_kerja_peserta_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_peserta_jawaban_ibfk_1` FOREIGN KEY (`ruang_kerja_materi_satu_id`) REFERENCES `ruang_kerja_materi_satu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ruang_kerja_peserta_jawaban_ibfk_2` FOREIGN KEY (`ruang_kerja_materi_dua_id`) REFERENCES `ruang_kerja_materi_dua` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ruang_kerja_peserta_jawaban_ibfk_3` FOREIGN KEY (`ruang_kerja_materi_tiga_detail_id`) REFERENCES `ruang_kerja_materi_tiga_detail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ruang_kerja_peserta_jawaban_ibfk_4` FOREIGN KEY (`ruang_kerja_peserta_id`) REFERENCES `ruang_kerja_peserta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=166 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja_peserta_jawaban
 -- ----------------------------
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (1, 1636, 'A', 115, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:52');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (2, 1636, 'B', 110, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:53');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (3, 1636, 'D', 120, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:54');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (4, 1636, 'E', 111, NULL, NULL, 1, '2022-11-23 13:50:09', '2022-11-23 14:33:55');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (5, 1636, 'B', 109, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:56');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (6, 1636, 'D', 108, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:57');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (7, 1636, 'C', 106, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:58');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (8, 1636, 'A', 114, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:58');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (9, 1636, 'C', 117, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:33:59');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (10, 1636, 'E', 107, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:34:00');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (11, 1636, 'B', 118, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:34:00');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (12, 1636, 'C', 116, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:34:01');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (13, 1636, 'D', 112, NULL, NULL, 1, '2022-11-23 13:50:09', '2022-11-23 14:34:02');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (14, 1636, 'B', 113, NULL, NULL, 1, '2022-11-23 13:50:09', '2022-11-23 14:34:03');
-INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (15, 1636, 'E', 119, NULL, NULL, 0, '2022-11-23 13:50:09', '2022-11-23 14:34:03');
+BEGIN;
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (31, 1644, 'E', 118, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:04');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (32, 1644, 'D', 111, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:05');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (33, 1644, 'B', 106, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:06');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (34, 1644, 'C', 117, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:06');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (35, 1644, 'B', 107, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:07');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (36, 1644, 'C', 115, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:07');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (37, 1644, 'D', 116, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:08');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (38, 1644, 'E', 113, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:08');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (39, 1644, 'C', 120, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:09');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (40, 1644, 'C', 114, NULL, NULL, 1, '2022-11-23 18:24:47', '2022-11-23 18:31:09');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (41, 1644, 'B', 110, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:10');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (42, 1644, 'D', 112, NULL, NULL, 1, '2022-11-23 18:24:47', '2022-11-23 18:31:11');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (43, 1644, 'E', 109, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:11');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (44, 1644, 'B', 119, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:12');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (45, 1644, 'B', 108, NULL, NULL, 0, '2022-11-23 18:24:47', '2022-11-23 18:31:13');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (46, 1644, 'SS', NULL, 891, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:30:24');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (47, 1644, 'S', NULL, 909, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:30:25');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (48, 1644, 'TS', NULL, 883, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:30:25');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (49, 1644, 'SS', NULL, 920, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:16');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (50, 1644, 'S', NULL, 868, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:17');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (51, 1644, 'TS', NULL, 922, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:17');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (52, 1644, 'STS', NULL, 916, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:18');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (53, 1644, 'TS', NULL, 871, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:19');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (54, 1644, 'S', NULL, 859, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:19');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (55, 1644, 'SS', NULL, 947, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (56, 1644, 'TS', NULL, 951, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:29');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (57, 1644, 'STS', NULL, 946, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:30');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (58, 1644, 'TS', NULL, 942, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:30');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (59, 1644, 'TS', NULL, 896, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:31');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (60, 1644, 'S', NULL, 897, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:31');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (61, 1644, 'TS', NULL, 881, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:32');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (62, 1644, 'STS', NULL, 893, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:32');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (63, 1644, 'TS', NULL, 855, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:32');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (64, 1644, 'SS', NULL, 944, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:33');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (65, 1644, 'S', NULL, 861, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:34');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (66, 1644, 'TS', NULL, 949, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:34');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (67, 1644, 'STS', NULL, 860, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (68, 1644, 'STS', NULL, 880, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (69, 1644, 'STS', NULL, 943, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (70, 1644, 'STS', NULL, 874, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (71, 1644, 'TS', NULL, 845, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (72, 1644, 'TS', NULL, 858, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (73, 1644, 'TS', NULL, 847, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (74, 1644, 'TS', NULL, 900, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (75, 1644, 'TS', NULL, 924, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (76, 1644, 'TS', NULL, 952, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (77, 1644, 'TS', NULL, 904, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (78, 1644, 'TS', NULL, 950, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (79, 1644, 'TS', NULL, 959, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (80, 1644, 'TS', NULL, 894, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (81, 1644, 'TS', NULL, 843, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (82, 1644, 'TS', NULL, 938, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (83, 1644, 'S', NULL, 905, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (84, 1644, 'S', NULL, 852, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (85, 1644, 'S', NULL, 913, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (86, 1644, 'S', NULL, 848, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (87, 1644, 'S', NULL, 955, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (88, 1644, 'S', NULL, 869, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (89, 1644, 'S', NULL, 842, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (90, 1644, 'S', NULL, 870, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (91, 1644, 'S', NULL, 895, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (92, 1644, 'S', NULL, 929, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (93, 1644, 'S', NULL, 878, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (94, 1644, 'S', NULL, 875, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (95, 1644, 'S', NULL, 854, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (96, 1644, 'S', NULL, 939, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (97, 1644, 'SS', NULL, 941, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (98, 1644, 'SS', NULL, 934, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (99, 1644, 'SS', NULL, 888, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (100, 1644, 'SS', NULL, 902, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (101, 1644, 'SS', NULL, 931, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (102, 1644, 'SS', NULL, 915, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (103, 1644, 'SS', NULL, 936, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (104, 1644, 'SS', NULL, 844, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (105, 1644, 'SS', NULL, 928, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (106, 1644, 'SS', NULL, 890, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (107, 1644, 'SS', NULL, 884, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (108, 1644, 'SS', NULL, 957, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (109, 1644, 'SS', NULL, 945, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (110, 1644, 'SS', NULL, 892, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (111, 1644, 'SS', NULL, 910, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (112, 1644, 'SS', NULL, 850, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (113, 1644, 'SS', NULL, 914, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (114, 1644, 'SS', NULL, 898, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (115, 1644, 'SS', NULL, 851, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (116, 1644, 'STS', NULL, 889, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:45');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (117, 1644, 'STS', NULL, 865, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:45');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (118, 1644, 'STS', NULL, 960, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (119, 1644, 'STS', NULL, 919, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (120, 1644, 'STS', NULL, 849, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (121, 1644, 'STS', NULL, 899, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (122, 1644, 'STS', NULL, 940, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (123, 1644, 'STS', NULL, 935, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (124, 1644, 'STS', NULL, 911, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (125, 1644, 'STS', NULL, 872, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (126, 1644, 'STS', NULL, 887, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (127, 1644, 'STS', NULL, 927, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (128, 1644, 'STS', NULL, 925, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (129, 1644, 'TS', NULL, 906, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:48');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (130, 1644, 'TS', NULL, 864, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (131, 1644, 'TS', NULL, 932, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (132, 1644, 'TS', NULL, 917, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (133, 1644, 'TS', NULL, 953, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (134, 1644, 'TS', NULL, 856, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (135, 1644, 'TS', NULL, 882, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (136, 1644, 'TS', NULL, 903, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:52');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (137, 1644, 'TS', NULL, 841, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:52');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (138, 1644, 'S', NULL, 876, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:52');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (139, 1644, 'S', NULL, 956, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (140, 1644, 'S', NULL, 937, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (141, 1644, 'S', NULL, 912, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (142, 1644, 'S', NULL, 954, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (143, 1644, 'S', NULL, 862, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (144, 1644, 'S', NULL, 886, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (145, 1644, 'S', NULL, 921, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (146, 1644, 'S', NULL, 901, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (147, 1644, 'S', NULL, 846, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (148, 1644, 'S', NULL, 867, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (149, 1644, 'S', NULL, 933, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (150, 1644, 'S', NULL, 877, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (151, 1644, 'S', NULL, 948, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (152, 1644, 'S', NULL, 923, NULL, 2, '2022-11-23 18:36:23', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (153, 1644, 'S', NULL, 930, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (154, 1644, 'TS', NULL, 879, NULL, 3, '2022-11-23 18:36:23', '2022-11-23 19:31:56');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (155, 1644, 'STS', NULL, 918, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (156, 1644, 'STS', NULL, 907, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (157, 1644, 'STS', NULL, 873, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (158, 1644, 'STS', NULL, 958, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (159, 1644, 'STS', NULL, 863, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (160, 1644, 'STS', NULL, 857, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (161, 1644, 'STS', NULL, 908, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (162, 1644, 'STS', NULL, 926, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:32:21');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (163, 1644, 'STS', NULL, 885, NULL, 4, '2022-11-23 18:36:23', '2022-11-23 19:32:21');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (164, 1644, 'STS', NULL, 866, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:32:22');
+INSERT INTO `ruang_kerja_peserta_jawaban` VALUES (165, 1644, 'STS', NULL, 853, NULL, 1, '2022-11-23 18:36:23', '2022-11-23 19:32:22');
+COMMIT;
 
 -- ----------------------------
 -- Table structure for ruang_kerja_peserta_waktu
 -- ----------------------------
 DROP TABLE IF EXISTS `ruang_kerja_peserta_waktu`;
-CREATE TABLE `ruang_kerja_peserta_waktu`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `ruang_kerja_peserta_id` bigint(20) NULL DEFAULT NULL,
-  `waktu` int(11) NULL DEFAULT NULL,
-  `materi` tinyint(4) NULL DEFAULT NULL,
+CREATE TABLE `ruang_kerja_peserta_waktu` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ruang_kerja_peserta_id` bigint DEFAULT NULL,
+  `waktu` int DEFAULT NULL,
+  `materi` tinyint DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `ruang_kerja_peserta_id`(`ruang_kerja_peserta_id`) USING BTREE,
+  KEY `ruang_kerja_peserta_id` (`ruang_kerja_peserta_id`) USING BTREE,
   CONSTRAINT `ruang_kerja_peserta_waktu_ibfk_1` FOREIGN KEY (`ruang_kerja_peserta_id`) REFERENCES `ruang_kerja_peserta` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 26 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE=InnoDB AUTO_INCREMENT=416 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 -- Records of ruang_kerja_peserta_waktu
 -- ----------------------------
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (3, 1636, 115, 1, '2022-11-23 14:31:53', '2022-11-23 14:31:53');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (4, 1636, 41, 1, '2022-11-23 14:33:07', '2022-11-23 14:33:07');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (5, 1636, 105, 1, '2022-11-23 14:33:16', '2022-11-23 14:33:16');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (6, 1636, 103, 1, '2022-11-23 14:33:18', '2022-11-23 14:33:18');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (7, 1636, 102, 1, '2022-11-23 14:33:19', '2022-11-23 14:33:19');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (8, 1636, 102, 1, '2022-11-23 14:33:19', '2022-11-23 14:33:19');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (9, 1636, 71, 1, '2022-11-23 14:33:50', '2022-11-23 14:33:50');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (10, 1636, 38, 1, '2022-11-23 14:33:52', '2022-11-23 14:33:52');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (11, 1636, 37, 1, '2022-11-23 14:33:53', '2022-11-23 14:33:53');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (12, 1636, 36, 1, '2022-11-23 14:33:54', '2022-11-23 14:33:54');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (13, 1636, 35, 1, '2022-11-23 14:33:55', '2022-11-23 14:33:55');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (14, 1636, 34, 1, '2022-11-23 14:33:56', '2022-11-23 14:33:56');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (15, 1636, 33, 1, '2022-11-23 14:33:57', '2022-11-23 14:33:57');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (16, 1636, 32, 1, '2022-11-23 14:33:58', '2022-11-23 14:33:58');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (17, 1636, 32, 1, '2022-11-23 14:33:58', '2022-11-23 14:33:58');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (18, 1636, 31, 1, '2022-11-23 14:33:59', '2022-11-23 14:33:59');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (19, 1636, 30, 1, '2022-11-23 14:34:00', '2022-11-23 14:34:00');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (20, 1636, 30, 1, '2022-11-23 14:34:00', '2022-11-23 14:34:00');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (21, 1636, 29, 1, '2022-11-23 14:34:01', '2022-11-23 14:34:01');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (22, 1636, 28, 1, '2022-11-23 14:34:02', '2022-11-23 14:34:02');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (23, 1636, 27, 1, '2022-11-23 14:34:03', '2022-11-23 14:34:03');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (24, 1636, 27, 1, '2022-11-23 14:34:03', '2022-11-23 14:34:03');
-INSERT INTO `ruang_kerja_peserta_waktu` VALUES (25, 1636, 0, 1, '2022-11-23 14:34:34', '2022-11-23 14:34:34');
+BEGIN;
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (43, 1644, 120, 1, '2022-11-23 18:24:47', '2022-11-23 18:24:47');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (44, 1644, 114, 1, '2022-11-23 18:24:52', '2022-11-23 18:24:52');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (45, 1644, 110, 1, '2022-11-23 18:26:16', '2022-11-23 18:26:16');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (46, 1644, 103, 1, '2022-11-23 18:26:23', '2022-11-23 18:26:23');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (47, 1644, 98, 1, '2022-11-23 18:31:04', '2022-11-23 18:31:04');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (48, 1644, 97, 1, '2022-11-23 18:31:05', '2022-11-23 18:31:05');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (49, 1644, 96, 1, '2022-11-23 18:31:06', '2022-11-23 18:31:06');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (50, 1644, 96, 1, '2022-11-23 18:31:06', '2022-11-23 18:31:06');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (51, 1644, 95, 1, '2022-11-23 18:31:07', '2022-11-23 18:31:07');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (52, 1644, 95, 1, '2022-11-23 18:31:07', '2022-11-23 18:31:07');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (53, 1644, 94, 1, '2022-11-23 18:31:08', '2022-11-23 18:31:08');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (54, 1644, 94, 1, '2022-11-23 18:31:08', '2022-11-23 18:31:08');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (55, 1644, 93, 1, '2022-11-23 18:31:09', '2022-11-23 18:31:09');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (56, 1644, 93, 1, '2022-11-23 18:31:09', '2022-11-23 18:31:09');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (57, 1644, 92, 1, '2022-11-23 18:31:10', '2022-11-23 18:31:10');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (58, 1644, 91, 1, '2022-11-23 18:31:11', '2022-11-23 18:31:11');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (59, 1644, 91, 1, '2022-11-23 18:31:11', '2022-11-23 18:31:11');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (60, 1644, 90, 1, '2022-11-23 18:31:12', '2022-11-23 18:31:12');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (61, 1644, 89, 1, '2022-11-23 18:31:13', '2022-11-23 18:31:13');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (62, 1644, 0, 1, '2022-11-23 18:31:14', '2022-11-23 18:31:14');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (63, 1644, 87, 1, '2022-11-23 18:31:15', '2022-11-23 18:31:15');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (65, 1644, 109, 1, '2022-11-23 18:42:13', '2022-11-23 18:42:13');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (66, 1644, 97, 1, '2022-11-23 18:42:25', '2022-11-23 18:42:25');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (67, 1644, 0, 1, '2022-11-23 18:44:26', '2022-11-23 18:44:26');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (68, 1644, 1, 1, '2022-11-23 18:44:26', '2022-11-23 18:44:26');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (69, 1644, 115, 1, '2022-11-23 19:12:48', '2022-11-23 19:12:48');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (70, 1644, 108, 1, '2022-11-23 19:13:03', '2022-11-23 19:13:03');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (291, 1644, 97, 2, '2022-11-23 19:29:14', '2022-11-23 19:29:14');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (292, 1644, 74, 2, '2022-11-23 19:29:37', '2022-11-23 19:29:37');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (293, 1644, 68, 2, '2022-11-23 19:29:43', '2022-11-23 19:29:43');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (294, 1644, 66, 2, '2022-11-23 19:29:45', '2022-11-23 19:29:45');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (295, 1644, 64, 2, '2022-11-23 19:30:24', '2022-11-23 19:30:24');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (296, 1644, 63, 2, '2022-11-23 19:30:25', '2022-11-23 19:30:25');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (297, 1644, 63, 2, '2022-11-23 19:30:25', '2022-11-23 19:30:25');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (298, 1644, 61, 2, '2022-11-23 19:31:16', '2022-11-23 19:31:16');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (299, 1644, 60, 2, '2022-11-23 19:31:17', '2022-11-23 19:31:17');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (300, 1644, 60, 2, '2022-11-23 19:31:17', '2022-11-23 19:31:17');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (301, 1644, 59, 2, '2022-11-23 19:31:18', '2022-11-23 19:31:18');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (302, 1644, 58, 2, '2022-11-23 19:31:19', '2022-11-23 19:31:19');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (303, 1644, 58, 2, '2022-11-23 19:31:19', '2022-11-23 19:31:19');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (304, 1644, 57, 2, '2022-11-23 19:31:20', '2022-11-23 19:31:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (305, 1644, 54, 2, '2022-11-23 19:31:29', '2022-11-23 19:31:29');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (306, 1644, 53, 2, '2022-11-23 19:31:30', '2022-11-23 19:31:30');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (307, 1644, 53, 2, '2022-11-23 19:31:30', '2022-11-23 19:31:30');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (308, 1644, 52, 2, '2022-11-23 19:31:31', '2022-11-23 19:31:31');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (309, 1644, 52, 2, '2022-11-23 19:31:31', '2022-11-23 19:31:31');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (310, 1644, 51, 2, '2022-11-23 19:31:32', '2022-11-23 19:31:32');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (311, 1644, 51, 2, '2022-11-23 19:31:32', '2022-11-23 19:31:32');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (312, 1644, 51, 2, '2022-11-23 19:31:32', '2022-11-23 19:31:32');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (313, 1644, 50, 2, '2022-11-23 19:31:33', '2022-11-23 19:31:33');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (314, 1644, 49, 2, '2022-11-23 19:31:34', '2022-11-23 19:31:34');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (315, 1644, 49, 2, '2022-11-23 19:31:34', '2022-11-23 19:31:34');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (316, 1644, 48, 2, '2022-11-23 19:31:35', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (317, 1644, 48, 2, '2022-11-23 19:31:35', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (318, 1644, 48, 2, '2022-11-23 19:31:35', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (319, 1644, 48, 2, '2022-11-23 19:31:35', '2022-11-23 19:31:35');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (320, 1644, 47, 2, '2022-11-23 19:31:36', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (321, 1644, 47, 2, '2022-11-23 19:31:36', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (322, 1644, 47, 2, '2022-11-23 19:31:36', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (323, 1644, 47, 2, '2022-11-23 19:31:36', '2022-11-23 19:31:36');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (324, 1644, 46, 2, '2022-11-23 19:31:37', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (325, 1644, 46, 2, '2022-11-23 19:31:37', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (326, 1644, 46, 2, '2022-11-23 19:31:37', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (327, 1644, 46, 2, '2022-11-23 19:31:37', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (328, 1644, 46, 2, '2022-11-23 19:31:37', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (329, 1644, 46, 2, '2022-11-23 19:31:37', '2022-11-23 19:31:37');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (330, 1644, 45, 2, '2022-11-23 19:31:38', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (331, 1644, 45, 2, '2022-11-23 19:31:38', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (332, 1644, 45, 2, '2022-11-23 19:31:38', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (333, 1644, 45, 2, '2022-11-23 19:31:38', '2022-11-23 19:31:38');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (334, 1644, 44, 2, '2022-11-23 19:31:39', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (335, 1644, 44, 2, '2022-11-23 19:31:39', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (336, 1644, 44, 2, '2022-11-23 19:31:39', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (337, 1644, 44, 2, '2022-11-23 19:31:39', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (338, 1644, 44, 2, '2022-11-23 19:31:39', '2022-11-23 19:31:39');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (339, 1644, 43, 2, '2022-11-23 19:31:40', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (340, 1644, 43, 2, '2022-11-23 19:31:40', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (341, 1644, 43, 2, '2022-11-23 19:31:40', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (342, 1644, 43, 2, '2022-11-23 19:31:40', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (343, 1644, 43, 2, '2022-11-23 19:31:40', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (344, 1644, 43, 2, '2022-11-23 19:31:40', '2022-11-23 19:31:40');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (345, 1644, 42, 2, '2022-11-23 19:31:41', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (346, 1644, 42, 2, '2022-11-23 19:31:41', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (347, 1644, 42, 2, '2022-11-23 19:31:41', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (348, 1644, 42, 2, '2022-11-23 19:31:41', '2022-11-23 19:31:41');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (349, 1644, 41, 2, '2022-11-23 19:31:42', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (350, 1644, 41, 2, '2022-11-23 19:31:42', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (351, 1644, 41, 2, '2022-11-23 19:31:42', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (352, 1644, 41, 2, '2022-11-23 19:31:42', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (353, 1644, 41, 2, '2022-11-23 19:31:42', '2022-11-23 19:31:42');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (354, 1644, 40, 2, '2022-11-23 19:31:43', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (355, 1644, 40, 2, '2022-11-23 19:31:43', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (356, 1644, 40, 2, '2022-11-23 19:31:43', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (357, 1644, 40, 2, '2022-11-23 19:31:43', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (358, 1644, 40, 2, '2022-11-23 19:31:43', '2022-11-23 19:31:43');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (359, 1644, 39, 2, '2022-11-23 19:31:44', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (360, 1644, 39, 2, '2022-11-23 19:31:44', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (361, 1644, 39, 2, '2022-11-23 19:31:44', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (362, 1644, 39, 2, '2022-11-23 19:31:44', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (363, 1644, 39, 2, '2022-11-23 19:31:44', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (364, 1644, 39, 2, '2022-11-23 19:31:44', '2022-11-23 19:31:44');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (365, 1644, 38, 2, '2022-11-23 19:31:45', '2022-11-23 19:31:45');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (366, 1644, 38, 2, '2022-11-23 19:31:45', '2022-11-23 19:31:45');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (367, 1644, 37, 2, '2022-11-23 19:31:46', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (368, 1644, 37, 2, '2022-11-23 19:31:46', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (369, 1644, 37, 2, '2022-11-23 19:31:46', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (370, 1644, 37, 2, '2022-11-23 19:31:46', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (371, 1644, 37, 2, '2022-11-23 19:31:46', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (372, 1644, 37, 2, '2022-11-23 19:31:46', '2022-11-23 19:31:46');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (373, 1644, 36, 2, '2022-11-23 19:31:47', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (374, 1644, 36, 2, '2022-11-23 19:31:47', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (375, 1644, 36, 2, '2022-11-23 19:31:47', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (376, 1644, 36, 2, '2022-11-23 19:31:47', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (377, 1644, 36, 2, '2022-11-23 19:31:47', '2022-11-23 19:31:47');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (378, 1644, 35, 2, '2022-11-23 19:31:48', '2022-11-23 19:31:48');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (379, 1644, 32, 2, '2022-11-23 19:31:51', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (380, 1644, 32, 2, '2022-11-23 19:31:51', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (381, 1644, 32, 2, '2022-11-23 19:31:51', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (382, 1644, 32, 2, '2022-11-23 19:31:51', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (383, 1644, 32, 2, '2022-11-23 19:31:51', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (384, 1644, 32, 2, '2022-11-23 19:31:51', '2022-11-23 19:31:51');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (385, 1644, 31, 2, '2022-11-23 19:31:52', '2022-11-23 19:31:52');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (386, 1644, 31, 2, '2022-11-23 19:31:52', '2022-11-23 19:31:52');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (387, 1644, 31, 2, '2022-11-23 19:31:52', '2022-11-23 19:31:52');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (388, 1644, 30, 2, '2022-11-23 19:31:53', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (389, 1644, 30, 2, '2022-11-23 19:31:53', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (390, 1644, 30, 2, '2022-11-23 19:31:53', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (391, 1644, 30, 2, '2022-11-23 19:31:53', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (392, 1644, 30, 2, '2022-11-23 19:31:53', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (393, 1644, 30, 2, '2022-11-23 19:31:53', '2022-11-23 19:31:53');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (394, 1644, 29, 2, '2022-11-23 19:31:54', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (395, 1644, 29, 2, '2022-11-23 19:31:54', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (396, 1644, 29, 2, '2022-11-23 19:31:54', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (397, 1644, 29, 2, '2022-11-23 19:31:54', '2022-11-23 19:31:54');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (398, 1644, 28, 2, '2022-11-23 19:31:55', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (399, 1644, 28, 2, '2022-11-23 19:31:55', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (400, 1644, 28, 2, '2022-11-23 19:31:55', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (401, 1644, 28, 2, '2022-11-23 19:31:55', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (402, 1644, 28, 2, '2022-11-23 19:31:55', '2022-11-23 19:31:55');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (403, 1644, 27, 2, '2022-11-23 19:31:56', '2022-11-23 19:31:56');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (404, 1644, 3, 2, '2022-11-23 19:32:20', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (405, 1644, 3, 2, '2022-11-23 19:32:20', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (406, 1644, 3, 2, '2022-11-23 19:32:20', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (407, 1644, 3, 2, '2022-11-23 19:32:20', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (408, 1644, 3, 2, '2022-11-23 19:32:20', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (409, 1644, 3, 2, '2022-11-23 19:32:20', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (410, 1644, 3, 2, '2022-11-23 19:32:20', '2022-11-23 19:32:20');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (411, 1644, 2, 2, '2022-11-23 19:32:21', '2022-11-23 19:32:21');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (412, 1644, 2, 2, '2022-11-23 19:32:21', '2022-11-23 19:32:21');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (413, 1644, 1, 2, '2022-11-23 19:32:22', '2022-11-23 19:32:22');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (414, 1644, 1, 2, '2022-11-23 19:32:22', '2022-11-23 19:32:22');
+INSERT INTO `ruang_kerja_peserta_waktu` VALUES (415, 1644, 0, 2, '2022-11-23 19:32:23', '2022-11-23 19:32:23');
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
