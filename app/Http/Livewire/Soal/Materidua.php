@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend\Soal;
+namespace App\Http\Livewire\Soal;
 
 use App\Imports\MateriDuaDetail as ImportsMateriDuaDetail;
 use App\Models\MateriDua as ModelsMateriDua;
@@ -54,7 +54,7 @@ class Materidua extends Component
       $data->id = $this->jenis;
       $data->save();
     }
-    return view('livewire.backend.soal.materidua', [
+    return view('livewire.soal.materidua', [
       'data' => MateriDuaDetail::where('materi_dua_id', $this->jenis)->get(),
     ]);
   }

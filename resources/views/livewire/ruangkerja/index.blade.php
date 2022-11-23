@@ -19,7 +19,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <a class="btn btn-primary" href="/admin/ruangkerja/tambah">Tambah</a>
+              <a class="btn btn-primary" href="/ruangkerja/tambah">Tambah</a>
             </div>
             <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">
@@ -30,7 +30,6 @@
                     <th>Materi Satu</th>
                     <th>Materi Dua</th>
                     <th>Materi Tiga</th>
-                    <th>Waktu</th>
                     <th>Peserta</th>
                     <th style="width: 10px"></th>
                   </tr>
@@ -43,33 +42,54 @@
                       <td>
                         @php
                           if ($row->materi_satu_id) {
-                              echo 'Jumlah Soal : ' . $row->materiSatu->detail->count();
+                              echo 'Jumlah Soal : ' . $row->materiSatu->count();
+                              echo '<br>Waktu : ' .
+                                  \Carbon\CarbonInterval::seconds($row->waktu_materi_satu)
+                                      ->cascade()
+                                      ->forHumans();
                           }
                         @endphp
                       </td>
                       <td>
                         @php
                           if ($row->materi_dua_id) {
-                              echo 'Jumlah Soal : ' . $row->materiDua->detail->count();
+                              echo 'Jumlah Soal : ' . $row->materiDua->count();
+                              echo '<br>Waktu : ' .
+                                  \Carbon\CarbonInterval::seconds($row->waktu_materi_dua)
+                                      ->cascade()
+                                      ->forHumans();
                           }
                         @endphp
                       </td>
                       <td>
                         @php
                           if ($row->materi_tiga_id) {
-                              echo 'Jumlah Soal : ' . $row->materiTiga->detail->count();
+                              switch ($row->materi_tiga_id) {
+                                  case 1:
+                                      echo 'Jenis : Angka';
+                                      break;
+                                  case 2:
+                                      echo 'Jenis : Huruf';
+                                      break;
+                                  case 3:
+                                      echo 'Jenis : Simbol';
+                                      break;
+                              }
+                              echo '<br>Waktu : ' .
+                                  \Carbon\CarbonInterval::seconds($row->waktu_materi_tiga)
+                                      ->cascade()
+                                      ->forHumans();
                           }
                         @endphp
                       </td>
-                      <td>{{ CarbonInterval::seconds($row->waktu)->cascade()->forHumans() }}</td>
-                      <td>{{ $row->peserta->count() }}</td>
+                      <td><a href="/ruangkerja/peserta/{{ $row->id }}"
+                          class="btn btn-warning ">{{ $row->peserta->count() }}</a></td>
                       <td>
                         @if ($row->getKey() == $key)
-                          <button class="btn btn-success btn-sm" wire:click="hapus">Ya, Hapus</button>
-                          <button class="btn btn-danger btn-sm" wire:click="setKey">Batal</button>
+                          <button class="btn btn-success" wire:click="hapus">Ya, Hapus</button>
+                          <button class="btn btn-danger" wire:click="setKey">Batal</button>
                         @else
-                          <a class="btn btn-info btn-sm" href="/admin/datapeserta/edit/{{ $row->getKey() }}">Edit</a>
-                          <button class="btn btn-danger btn-sm" wire:click="setKey({{ $row->getKey() }})">Hapus</button>
+                          <button class="btn btn-danger" wire:click="setKey({{ $row->getKey() }})">Hapus</button>
                         @endif
                       </td>
                     </tr>

@@ -15,12 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function () {
   Route::post('/upload', [\App\Http\Controllers\FileController::class, 'store'])->name('file.upload');
-  Route::get('/', \App\Http\Livewire\Backend\Home::class);
-  Route::get('/gantikatasandi', \App\Http\Livewire\Backend\Gantikatasandi::class);
-  Route::get('/soal', \App\Http\Livewire\Backend\Soal\Index::class);
-  Route::get('/petunjuk', \App\Http\Livewire\Backend\Petunjuk::class);
+  Route::get('/', \App\Http\Livewire\Home::class);
+  Route::get('/gantikatasandi', \App\Http\Livewire\Gantikatasandi::class);
+  Route::get('/soal', \App\Http\Livewire\Soal\Index::class);
+  Route::get('/petunjuk', \App\Http\Livewire\Petunjuk::class);
   Route::prefix('ruangkerja')->group(function () {
-    Route::get('/', \App\Http\Livewire\Backend\Ruangkerja\Index::class);
-    Route::get('/tambah', \App\Http\Livewire\Backend\Ruangkerja\Form::class);
+    Route::get('/', \App\Http\Livewire\Ruangkerja\Index::class);
+    Route::get('/tambah', \App\Http\Livewire\Ruangkerja\Form::class);
+    Route::get('/peserta/{key}', \App\Http\Livewire\Ruangkerja\Peserta::class);
   });
 });

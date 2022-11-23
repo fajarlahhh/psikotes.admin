@@ -26,7 +26,7 @@ CREATE TABLE `materi_dua` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of materi_dua
@@ -47,14 +47,14 @@ CREATE TABLE `materi_dua_detail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `materi_dua_id` bigint NOT NULL,
   `soal` longtext,
-  `kunci` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `kunci` varchar(255) CHARACTER SET utf8mb4  DEFAULT NULL,
   `aspek` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `materi_dua_id` (`materi_dua_id`),
   CONSTRAINT `materi_dua_detail_ibfk_1` FOREIGN KEY (`materi_dua_id`) REFERENCES `materi_dua` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1083 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1083 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of materi_dua_detail
@@ -191,7 +191,7 @@ CREATE TABLE `materi_satu` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of materi_satu
@@ -210,14 +210,14 @@ CREATE TABLE `materi_satu_detail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `materi_satu_id` bigint DEFAULT NULL,
   `aspek` varchar(255) DEFAULT NULL,
-  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `kunci` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `soal` longtext CHARACTER SET utf8mb4 ,
+  `kunci` char(1) CHARACTER SET utf8mb4  DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `materi_satu_id` (`materi_satu_id`),
   CONSTRAINT `materi_satu_detail_ibfk_1` FOREIGN KEY (`materi_satu_id`) REFERENCES `materi_satu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of materi_satu_detail
@@ -249,7 +249,7 @@ CREATE TABLE `materi_tiga` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of materi_tiga
@@ -268,17 +268,17 @@ CREATE TABLE `materi_tiga_detail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `materi_tiga_id` bigint NOT NULL,
   `kolom` tinyint DEFAULT NULL,
-  `a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `b` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `c` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `d` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `e` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `a` longtext CHARACTER SET utf8mb4 ,
+  `b` longtext CHARACTER SET utf8mb4 ,
+  `c` longtext CHARACTER SET utf8mb4 ,
+  `d` longtext CHARACTER SET utf8mb4 ,
+  `e` longtext CHARACTER SET utf8mb4 ,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `materi_tiga_detail_ibfk_1` (`materi_tiga_id`),
   CONSTRAINT `materi_tiga_detail_ibfk_1` FOREIGN KEY (`materi_tiga_id`) REFERENCES `materi_tiga` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of materi_tiga_detail
@@ -323,17 +323,17 @@ DROP TABLE IF EXISTS `materi_tiga_sub_detail`;
 CREATE TABLE `materi_tiga_sub_detail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `materi_tiga_detail_id` bigint NOT NULL,
-  `a` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `a` char(255) CHARACTER SET utf8mb4  DEFAULT NULL,
   `b` char(255) DEFAULT NULL,
   `c` char(255) DEFAULT NULL,
   `d` char(255) DEFAULT NULL,
-  `kunci` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `kunci` char(255) CHARACTER SET utf8mb4  DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `materi_tiga_id` (`materi_tiga_detail_id`),
   CONSTRAINT `materi_tiga_sub_detail_ibfk_1` FOREIGN KEY (`materi_tiga_detail_id`) REFERENCES `materi_tiga_detail` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1510 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1510 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of materi_tiga_sub_detail
@@ -1856,7 +1856,7 @@ CREATE TABLE `pengguna` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `no_peserta` (`no_peserta`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of pengguna
@@ -1879,7 +1879,7 @@ CREATE TABLE `petunjuk` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `materi` (`materi`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of petunjuk
@@ -1912,7 +1912,7 @@ CREATE TABLE `ruang_kerja` (
   CONSTRAINT `ruang_kerja_ibfk_1` FOREIGN KEY (`materi_satu_id`) REFERENCES `materi_satu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ruang_kerja_ibfk_2` FOREIGN KEY (`materi_dua_id`) REFERENCES `materi_dua` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `ruang_kerja_ibfk_3` FOREIGN KEY (`materi_tiga_id`) REFERENCES `materi_tiga` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of ruang_kerja
@@ -1927,15 +1927,15 @@ DROP TABLE IF EXISTS `ruang_kerja_materi_dua`;
 CREATE TABLE `ruang_kerja_materi_dua` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `ruang_kerja_id` bigint NOT NULL,
-  `soal` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `kunci` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `aspek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `soal` longtext CHARACTER SET utf8mb4 ,
+  `kunci` varchar(255) CHARACTER SET utf8mb4  DEFAULT NULL,
+  `aspek` varchar(255) CHARACTER SET utf8mb4  DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ruang_kerja_id` (`ruang_kerja_id`),
   CONSTRAINT `ruang_kerja_materi_dua_ibfk_1` FOREIGN KEY (`ruang_kerja_id`) REFERENCES `ruang_kerja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of ruang_kerja_materi_dua
@@ -1951,17 +1951,17 @@ CREATE TABLE `ruang_kerja_materi_tiga` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `ruang_kerja_id` bigint NOT NULL,
   `kolom` tinyint DEFAULT NULL,
-  `a` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `b` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `c` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `d` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `e` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `a` longtext CHARACTER SET utf8mb4 ,
+  `b` longtext CHARACTER SET utf8mb4 ,
+  `c` longtext CHARACTER SET utf8mb4 ,
+  `d` longtext CHARACTER SET utf8mb4 ,
+  `e` longtext CHARACTER SET utf8mb4 ,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `ruang_kerja_id` (`ruang_kerja_id`),
   CONSTRAINT `ruang_kerja_materi_tiga_ibfk_1` FOREIGN KEY (`ruang_kerja_id`) REFERENCES `ruang_kerja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of ruang_kerja_materi_tiga
@@ -1976,17 +1976,17 @@ DROP TABLE IF EXISTS `ruang_kerja_materi_tiga_detail`;
 CREATE TABLE `ruang_kerja_materi_tiga_detail` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `ruang_kerja_materi_tiga_id` bigint NOT NULL,
-  `a` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `a` char(255) CHARACTER SET utf8mb4  DEFAULT NULL,
   `b` char(255) DEFAULT NULL,
   `c` char(255) DEFAULT NULL,
   `d` char(255) DEFAULT NULL,
-  `kunci` char(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `kunci` char(255) CHARACTER SET utf8mb4  DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   KEY `materi_tiga_id` (`ruang_kerja_materi_tiga_id`),
   CONSTRAINT `ruang_kerja_materi_tiga_detail_ibfk_1` FOREIGN KEY (`ruang_kerja_materi_tiga_id`) REFERENCES `ruang_kerja_materi_tiga` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of ruang_kerja_materi_tiga_detail
@@ -2009,7 +2009,7 @@ CREATE TABLE `ruang_kerja_peserta` (
   PRIMARY KEY (`id`),
   KEY `ruang_kerja_id` (`ruang_kerja_id`),
   CONSTRAINT `ruang_kerja_peserta_ibfk_1` FOREIGN KEY (`ruang_kerja_id`) REFERENCES `ruang_kerja` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of ruang_kerja_peserta

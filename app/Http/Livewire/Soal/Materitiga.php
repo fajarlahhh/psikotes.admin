@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend\Soal;
+namespace App\Http\Livewire\Soal;
 
 use App\Imports\MateriTigaSubDetail as ImportsMateriTigaSubDetail;
 use App\Models\MateriTiga as ModelsMateriTiga;
@@ -73,7 +73,7 @@ class Materitiga extends Component
       $data->id = $this->jenis;
       $data->save();
     }
-    return view('livewire.backend.soal.materitiga', [
+    return view('livewire.soal.materitiga', [
       'data' => MateriTigaDetail::where('materi_tiga_id', $this->jenis)->with('detail')->get(),
     ]);
   }

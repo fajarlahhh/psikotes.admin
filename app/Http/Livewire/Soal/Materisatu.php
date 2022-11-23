@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend\Soal;
+namespace App\Http\Livewire\Soal;
 
 use App\Models\MateriSatu as ModelsMateriSatu;
 use App\Models\MateriSatuDetail;
@@ -58,7 +58,7 @@ class Materisatu extends Component
       $data->id = $this->jenis;
       $data->save();
     }
-    return view('livewire.backend.soal.materisatu', [
+    return view('livewire.soal.materisatu', [
       'data' => MateriSatuDetail::where('materi_satu_id', $this->jenis)->get(),
     ]);
   }

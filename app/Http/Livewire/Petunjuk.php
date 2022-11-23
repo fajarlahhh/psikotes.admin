@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Backend;
+namespace App\Http\Livewire;
 
 use App\Models\Petunjuk as ModelsPetunjuk;
 use Livewire\Component;
@@ -19,7 +19,7 @@ class Petunjuk extends Component
 
   public function updatedMateri()
   {
-    return redirect('/admin/petunjuk?materi=' . $this->materi);
+    return redirect('/petunjuk?materi=' . $this->materi);
   }
 
   public function setMateri()
@@ -52,6 +52,6 @@ class Petunjuk extends Component
 
   public function render()
   {
-    return view('livewire.backend.petunjuk');
+    return view('livewire.petunjuk');
   }
 }
