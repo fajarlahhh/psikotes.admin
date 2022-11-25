@@ -84,7 +84,7 @@ class Form extends Component
       if ($this->materiTiga) {
         RuangKerjaMateriTiga::insert(MateriTigaSubDetail::with('materiTigaDetail')->whereHas('materiTigaDetail', fn($q) => $q->where('materi_tiga_id', $this->materiTiga))->get()->map(fn($q) => [
           'ruang_kerja_id' => $data->id,
-          'soal' => "[" . $q->materiTigaDetail->a . ", " . $q->materiTigaDetail->b . ", " . $q->materiTigaDetail->c . ", " . $q->materiTigaDetail->d . ", " . $q->materiTigaDetail->e . "]",
+          'soal' => json_encode([$q->materiTigaDetail->a, $q->materiTigaDetail->b, $q->materiTigaDetail->c, $q->materiTigaDetail->d, $q->materiTigaDetail->e]),
           'a' => $q->a,
           'b' => $q->b,
           'c' => $q->c,

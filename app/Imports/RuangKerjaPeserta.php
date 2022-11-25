@@ -18,13 +18,13 @@ class RuangKerjaPeserta implements ToModel
   public function model(array $row)
   {
     ++$this->index;
-    $waktu = date('hms');
+    $sandi = date('hms') . $this->index;
     return new ModelsRuangKerjaPeserta([
       'ruang_kerja_id' => $this->id,
       'nomor' => date('ymdHms') . $this->index,
       'nama' => $row[0],
-      'kata_sandi' => Hash::make($waktu) . $this->index,
-      'kata_sandi_show' => $waktu . $this->index,
+      'kata_sandi' => Hash::make($sandi),
+      'kata_sandi_show' => $sandi,
     ]);
   }
 }
