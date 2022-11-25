@@ -3,11 +3,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Tambah Ruang Kerja</h1>
+          <h1 class="m-0">Tambah Setting</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item">Ruang Kerja</li>
+            <li class="breadcrumb-item">Setting</li>
             <li class="breadcrumb-item active"><a href="#">Tambah</a></li>
           </ol>
         </div>

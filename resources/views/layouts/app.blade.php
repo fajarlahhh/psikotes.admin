@@ -30,10 +30,8 @@
       </ul>
     </nav>
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-      <a href="index3.html" class="brand-link">
-        <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
-          class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Ujian</span>
+      <a href="/" class="brand-link">
+        <span class="brand-text font-weight-light alert alert-secondary"><strong>RUMAH MIMIN</strong></span>
       </a>
 
       <div class="sidebar">
@@ -60,7 +58,7 @@
               <a href="/petunjuk" class="nav-link btn-logout">
                 <i class="nav-icon fas fa-ruler"></i>
                 <p>
-                  Petunjuk Soal
+                  Petunjuk
                 </p>
               </a>
             </li>
@@ -68,7 +66,7 @@
               <a href="/ruangkerja" class="nav-link btn-logout">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                  Ruang Kerja
+                  Setting
                 </p>
               </a>
             </li>
@@ -76,7 +74,15 @@
               <a href="/soal" class="nav-link btn-logout">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>
-                  Soal
+                  Materi
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/gantikatasandi" class="nav-link btn-logout">
+                <i class="nav-icon fas fa-key"></i>
+                <p>
+                  Ganti Kata Sandi
                 </p>
               </a>
             </li>

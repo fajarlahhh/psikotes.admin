@@ -10,4 +10,9 @@ class MateriTigaSubDetail extends Model
   use HasFactory;
   protected $table = "materi_tiga_sub_detail";
   protected $fillable = ['materi_tiga_detail_id', 'a', 'b', 'c', 'd', 'e', 'kunci'];
+
+  public function materiTigaDetail()
+  {
+    return $this->belongsTo(MateriTigaDetail::class);
+  }
 }

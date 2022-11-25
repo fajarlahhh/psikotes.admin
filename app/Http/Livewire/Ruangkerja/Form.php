@@ -11,7 +11,6 @@ use App\Models\RuangKerja;
 use App\Models\RuangKerjaMateriDua;
 use App\Models\RuangKerjaMateriSatu;
 use App\Models\RuangKerjaMateriTiga;
-use App\Models\RuangKerjaMateriTigaDetail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -83,27 +82,18 @@ class Form extends Component
       }
 
       if ($this->materiTiga) {
-        foreach (MateriTigaDetail::where('materi_tiga_id', $this->materiTiga)->with('detail')->get() as $key => $row) {
-          $soal = new RuangKerjaMateriTiga();
-          $soal->ruang_kerja_id = $data->id;
-          $soal->kolom = $row->kolom;
-          $soal->a = $row->a;
-          $soal->b = $row->b;
-          $soal->c = $row->c;
-          $soal->d = $row->d;
-          $soal->e = $row->e;
-          $soal->save();
-          RuangKerjaMateriTigaDetail::insert(MateriTigaSubDetail::where('materi_tiga_detail_id', $row->id)->get()->map(fn($q) => [
-            'ruang_kerja_materi_tiga_id' => $soal->id,
-            'a' => $q->a,
-            'b' => $q->b,
-            'c' => $q->c,
-            'd' => $q->d,
-            'kunci' => $q->kunci,
-            'created_at' => now(),
-            'updated_at' => now(),
-          ])->toArray());
-        }
+        RuangKerjaMateriTiga::insert(MateriTigaSubDetail::with('materiTigaDetail')->whereHas('materiTigaDetail', fn($q) => $q->where('materi_tiga_id', $this->materiTiga))->get()->map(fn($q) => [
+          'ruang_kerja_id' => $data->id,
+          'soal' => "[" . $q->materiTigaDetail->a . ", " . $q->materiTigaDetail->b . ", " . $q->materiTigaDetail->c . ", " . $q->materiTigaDetail->d . ", " . $q->materiTigaDetail->e . "]",
+          'a' => $q->a,
+          'b' => $q->b,
+          'c' => $q->c,
+          'd' => $q->d,
+          'kolom' => $q->materiTigaDetail->kolom,
+          'kunci' => $q->kunci,
+          'created_at' => now(),
+          'updated_at' => now(),
+        ])->toArray());
       }
 
       $extension = $this->dataPeserta->getClientOriginalExtension();
