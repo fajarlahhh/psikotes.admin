@@ -35,6 +35,10 @@
                   <input type="file" class="form-control" wire:model.defer="dataPeserta"
                     accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                 </div>
+                <div class="form-group">
+                  <label>Perulangan</label>
+                  <input type="number" class="form-control" wire:model.defer="perulangan">
+                </div>
                 <table class="table table-bordered">
                   <tr>
                     <th>Materi</th>

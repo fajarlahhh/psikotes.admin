@@ -21,12 +21,13 @@ class Form extends Component
 {
   use WithFileUploads;
 
-  public $waktuMateriSatu, $waktuMateriDua, $waktuMateriTiga, $deskripsi, $dataPeserta, $materiSatu, $materiDua, $materiTiga;
+  public $waktuMateriSatu, $waktuMateriDua, $waktuMateriTiga, $deskripsi, $perulangan, $dataPeserta, $materiSatu, $materiDua, $materiTiga;
 
   public function submit()
   {
     $this->validate([
       'deskripsi' => 'required',
+      'perulangan' => 'required',
       'dataPeserta' => 'required|mimes:xls,xlsx',
     ]);
 
@@ -51,6 +52,7 @@ class Form extends Component
     DB::transaction(function () {
       $data = new RuangKerja();
       $data->deskripsi = $this->deskripsi . '-' . date('Y-m-d H:m:s');
+      $data->perulangan = $this->perulangan;
       $data->materi_satu_id = $this->materiSatu;
       $data->materi_dua_id = $this->materiDua;
       $data->materi_tiga_id = $this->materiTiga;

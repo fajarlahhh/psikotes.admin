@@ -21,7 +21,7 @@ class RuangKerjaPeserta implements ToModel
     $sandi = date('hms') . $this->index;
     return new ModelsRuangKerjaPeserta([
       'ruang_kerja_id' => $this->id,
-      'nomor' => date('ymdHms') . $this->index,
+      'nomor' => date('YmdHms') . $this->index,
       'nama' => $row[0],
       'kata_sandi' => Hash::make($sandi),
       'kata_sandi_show' => $sandi,

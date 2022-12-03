@@ -30,6 +30,7 @@
                     <th>Materi Satu</th>
                     <th>Materi Dua</th>
                     <th>Materi Tiga</th>
+                    <th>Ulangi</th>
                     <th>Peserta</th>
                     <th style="width: 10px"></th>
                   </tr>
@@ -82,6 +83,7 @@
                           }
                         @endphp
                       </td>
+                      <td>{{ $row->perulangan }}</td>
                       <td><a href="/ruangkerja/peserta/{{ $row->id }}"
                           class="btn btn-warning ">{{ $row->peserta->count() }}</a></td>
                       <td>
