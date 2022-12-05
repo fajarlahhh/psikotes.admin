@@ -12,18 +12,14 @@
       <form wire:submit.prevent="submit">
         <table class="table table-bordered">
           <tr>
+            <th></th>
             <th>No.</th>
             <th>Soal</th>
             <th>Aspek</th>
             <th>Kunci</th>
-            <th class="width-100"></th>
           </tr>
           @foreach ($data as $no => $row)
             <tr>
-              <td>{{ $no + 1 }}</td>
-              <td>{!! $row->soal !!}</td>
-              <td>{{ $row->aspek }}</td>
-              <td>{{ $row->kunci }}</td>
               <td>
                 @if ($key == $row->getKey())
                   <a href="javascript:;" class="btn btn-danger" wire:click="hapus">Ya</a>
@@ -33,6 +29,10 @@
                     class="btn btn-danger">Hapus</a>
                 @endif
               </td>
+              <td>{{ $no + 1 }}</td>
+              <td>{!! $row->soal !!}</td>
+              <td>{{ $row->aspek }}</td>
+              <td>{{ $row->kunci }}</td>
             </tr>
           @endforeach
           <tr>
