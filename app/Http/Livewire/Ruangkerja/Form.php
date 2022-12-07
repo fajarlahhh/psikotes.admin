@@ -53,12 +53,12 @@ class Form extends Component
       $data = new RuangKerja();
       $data->deskripsi = $this->deskripsi . '-' . date('Y-m-d H:m:s');
       $data->perulangan = $this->perulangan;
-      $data->materi_satu_id = $this->materiSatu;
-      $data->materi_dua_id = $this->materiDua;
-      $data->materi_tiga_id = $this->materiTiga;
-      $data->waktu_materi_satu = $this->waktuMateriSatu;
-      $data->waktu_materi_dua = $this->waktuMateriDua;
-      $data->waktu_materi_tiga = $this->waktuMateriTiga;
+      $data->materi_satu_id = $this->materiSatu ?: null;
+      $data->materi_dua_id = $this->materiDua ?: null;
+      $data->materi_tiga_id = $this->materiTiga ?: null;
+      $data->waktu_materi_satu = $this->materiSatu ? $this->waktuMateriSatu : null;
+      $data->waktu_materi_dua = $this->materiDua ? $this->waktuMateriDua : null;
+      $data->waktu_materi_tiga = $this->materiTiga ? $this->waktuMateriTiga : null;
       $data->save();
 
       if ($this->materiSatu) {
