@@ -74,23 +74,11 @@
                     <td>
                       <select wire:model.defer="materiTiga" class="form-control">
                         <option value="">-- Tidak --</option>
-                        @foreach (\App\Models\MateriTigaDetail::with('materTiga')->select('materi_tiga_id', 'tipe')->groupBy('materi_tiga_id', 'tipe')->get() as $row)
-                          <option value="{{ $row->materi_tiga_id }};{{ $row->tipe }}">Jenis
-                            {{ $row->materi_tiga_id }}
-                            @switch($row->tipe)
-                              @case(1)
-                                Angka
-                              @break
-
-                              @case(2)
-                                Huruf
-                              @break
-
-                              @case(3)
-                                Simbol
-                              @break
-                            @endswitch
-                          </option>
+                        @foreach (\App\Models\MateriTiga::whereHas('detail')->get() as $row)
+                          <option value="{{ $row->getKey() }}">
+                            {{ $row->getKey() < 11 ? 'Huruf' : ($row->getKey() > 10 && $row->getKey() < 21 ? 'Simbol' : 'Angka') }}
+                            -
+                            {{ $row->getKey() % 10 == 0 ? 10 : $row->getKey() % 10 }}</option>
                         @endforeach
                       </select>
                     </td>

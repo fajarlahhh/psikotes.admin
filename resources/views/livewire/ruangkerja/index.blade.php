@@ -65,17 +65,7 @@
                       <td>
                         @php
                           if ($row->materi_tiga_id) {
-                              switch ($row->materi_tiga_id) {
-                                  case 1:
-                                      echo 'Jenis : Angka';
-                                      break;
-                                  case 2:
-                                      echo 'Jenis : Huruf';
-                                      break;
-                                  case 3:
-                                      echo 'Jenis : Simbol';
-                                      break;
-                              }
+                              echo ($row->materi_tiga_id < 11 ? 'Huruf' : ($row->materi_tiga_id > 10 && $row->materi_tiga_id < 21 ? 'Simbol' : 'Angka')) . ' - ' . ($row->materi_tiga_id % 10 == 0 ? 10 : $row->materi_tiga_id % 10);
                               echo '<br>Waktu : ' .
                                   \Carbon\CarbonInterval::seconds($row->waktu_materi_tiga)
                                       ->cascade()
