@@ -3,12 +3,21 @@
     <div class="card-header form-inline">
       Jenis :&nbsp;
       <select wire:model="jenis" class="form-control">
-        <option value="1">Angka</option>
-        <option value="2">Huruf</option>
-        <option value="3">Simbol</option>
-      </select>
+        @for ($i = 1; $i < 31; $i++)
+          <option value="{{ $i }}">
+            {{ $i < 11 ? 'Huruf' : ($i > 10 && $i < 21 ? 'Simbol' : 'Angka') }} - {{ $i }}</option>
+        @endfor
+      </select><br><br>
     </div>
-    <div class="card-body table-responsive  p-0">
+    <div class="card-body table-responsive p-0">
+      <div class="form-group p-4">
+        <label for="">Tipe</label>
+        <select wire:model="tipe" class="form-control">
+          <option value="Angka">Angka</option>
+          <option value="Huruf">Huruf</option>
+          <option value="Simbol">Simbol</option>
+        </select>
+      </div>
       <table class="table table-borderless">
         <tr>
           @for ($i = 1; $i <= 10; $i++)
@@ -83,7 +92,7 @@
                   <tr>
                     <td colspan="5" class="text-center">
                       <button class="btn btn-success" wire:click="simpan({{ $i }})">Simpan Kolom
-                        1</button>
+                        {{ $i }}</button>
                     </td>
                   </tr>
                 @endif

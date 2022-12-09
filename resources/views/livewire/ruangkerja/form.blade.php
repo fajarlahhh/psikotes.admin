@@ -35,10 +35,10 @@
                   <input type="file" class="form-control" wire:model.defer="dataPeserta"
                     accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label>Perulangan</label>
                   <input type="number" class="form-control" wire:model.defer="perulangan">
-                </div>
+                </div> --}}
                 <table class="table table-bordered">
                   <tr>
                     <th>Materi</th>
@@ -74,9 +74,10 @@
                     <td>
                       <select wire:model.defer="materiTiga" class="form-control">
                         <option value="">-- Tidak --</option>
-                        @foreach (\App\Models\MateriTiga::whereHas('detail')->get() as $row)
-                          <option value="{{ $row->getKey() }}">
-                            @switch($row->getKey())
+                        @foreach (\App\Models\MateriTigaDetail::with('materTiga')->select('materi_tiga_id', 'tipe')->groupBy('materi_tiga_id', 'tipe')->get() as $row)
+                          <option value="{{ $row->materi_tiga_id }};{{ $row->tipe }}">Jenis
+                            {{ $row->materi_tiga_id }}
+                            @switch($row->tipe)
                               @case(1)
                                 Angka
                               @break

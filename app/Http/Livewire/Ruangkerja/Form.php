@@ -27,7 +27,6 @@ class Form extends Component
   {
     $this->validate([
       'deskripsi' => 'required',
-      'perulangan' => 'required',
       'dataPeserta' => 'required|mimes:xls,xlsx',
     ]);
 
@@ -52,7 +51,7 @@ class Form extends Component
     DB::transaction(function () {
       $data = new RuangKerja();
       $data->deskripsi = $this->deskripsi . '-' . date('Y-m-d H:m:s');
-      $data->perulangan = $this->perulangan;
+      $data->perulangan = 1;
       $data->materi_satu_id = $this->materiSatu ?: null;
       $data->materi_dua_id = $this->materiDua ?: null;
       $data->materi_tiga_id = $this->materiTiga ?: null;
@@ -84,7 +83,9 @@ class Form extends Component
       }
 
       if ($this->materiTiga) {
-        RuangKerjaMateriTiga::insert(MateriTigaSubDetail::with('materiTigaDetail')->whereHas('materiTigaDetail', fn($q) => $q->where('materi_tiga_id', $this->materiTiga))->get()->map(fn($q) => [
+        $materiTiga = explode(';', $this->materiTiga);
+        dd(MateriTigaSubDetail::with('materiTigaDetail')->whereHas('materiTigaDetail', fn($q) => $q->where('materi_tiga_id', $materiTiga[0])->where('tipe', $materiTiga[1]))->get());
+        RuangKerjaMateriTiga::insert(MateriTigaSubDetail::with('materiTigaDetail')->whereHas('materiTigaDetail', fn($q) => $q->where('materi_tiga_id', $materiTiga[0])->where('tipe', $materiTiga[1]))->get()->map(fn($q) => [
           'ruang_kerja_id' => $data->id,
           'soal' => json_encode([$q->materiTigaDetail->a, $q->materiTigaDetail->b, $q->materiTigaDetail->c, $q->materiTigaDetail->d, $q->materiTigaDetail->e]),
           'a' => $q->a,

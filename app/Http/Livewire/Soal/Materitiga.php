@@ -15,7 +15,7 @@ class Materitiga extends Component
 {
   use WithFileUploads;
 
-  public $key, $jenis = 1;
+  public $key, $jenis = 1, $tipe;
 
   public $soalKolom = [], $file = [];
 
@@ -47,6 +47,10 @@ class Materitiga extends Component
     ]);
 
     DB::transaction(function () use ($kolom) {
+      $data = ModelsMateriTiga::find($this->jenis);
+      $data->tipe = $this->tipe;
+      $data->save();
+
       MateriTigaDetail::where('materi_tiga_id', $this->jenis)->where('kolom', $kolom)->delete();
 
       $data = new MateriTigaDetail();
@@ -64,6 +68,7 @@ class Materitiga extends Component
       Excel::import(new ImportsMateriTigaSubDetail($data->id), '/public/' . 'kolom' . $kolom . '.' . $extension);
       Storage::delete('public/kolom' . $kolom . '.' . $extension);
     });
+    $this->reset(['soalKolom']);
   }
 
   public function render()
@@ -71,8 +76,12 @@ class Materitiga extends Component
     if (!ModelsMateriTiga::find($this->jenis)) {
       $data = new ModelsMateriTiga();
       $data->id = $this->jenis;
+      $data->tipe = $this->jenis < 11 ? 'Huruf' : ($this->jenis > 10 && $this->jenis < 21 ? 'Simbol' : 'Angka');
       $data->save();
     }
+    $data = MateriTigaDetail::where('materi_tiga_id', $this->jenis)->with('detail')->get();
+    $this->tipe = $data->count() > 0 ? $data->first()->materiTiga->tipe : null;
+
     return view('livewire.soal.materitiga', [
       'data' => MateriTigaDetail::where('materi_tiga_id', $this->jenis)->with('detail')->get(),
     ]);

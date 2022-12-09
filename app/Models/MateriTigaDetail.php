@@ -15,4 +15,9 @@ class MateriTigaDetail extends Model
   {
     return $this->hasMany(MateriTigaSubDetail::class);
   }
+
+  public function materiTiga()
+  {
+    return $this->belongsTo(MateriTiga::class);
+  }
 }
