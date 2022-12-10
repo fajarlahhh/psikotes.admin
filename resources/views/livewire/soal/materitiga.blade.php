@@ -5,7 +5,8 @@
       <select wire:model="jenis" class="form-control">
         @for ($i = 1; $i < 31; $i++)
           <option value="{{ $i }}">
-            {{ $i < 11 ? 'Huruf' : ($i > 10 && $i < 21 ? 'Simbol' : 'Angka') }} - {{ $i % 10 == 0 ? 10 : $i % 10 }}</option>
+            {{ $i < 11 ? 'Angka' : ($i > 10 && $i < 21 ? 'Simbol' : 'Huruf') }} - {{ $i % 10 == 0 ? 10 : $i % 10 }}
+          </option>
         @endfor
       </select><br><br>
     </div>
