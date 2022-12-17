@@ -27,9 +27,7 @@
                     <th>Nomor</th>
                     <th>Nama</th>
                     <th>Kata Sandi</th>
-                    <th>Nilai Materi Satu</th>
-                    <th>Nilai Materi Dua</th>
-                    <th>Nilai Materi Tiga</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -39,9 +37,10 @@
                       <td>{{ $row->nomor }}</td>
                       <td>{{ $row->nama }}</td>
                       <td>{{ $row->kata_sandi_show }}</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>
+                        <a href="/ruangkerja/peserta/{{ $key }}/{{ $row->id }}"
+                          class="btn btn-warning">Nilai</a>
+                      </td>
                     </tr>
                   @endforeach
                 </tbody>

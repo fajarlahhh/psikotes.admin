@@ -23,5 +23,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', \App\Http\Livewire\Ruangkerja\Index::class);
     Route::get('/tambah', \App\Http\Livewire\Ruangkerja\Form::class);
     Route::get('/peserta/{key}', \App\Http\Livewire\Ruangkerja\Peserta::class);
+    Route::get('/peserta/{key}/{peserta}', \App\Http\Livewire\Ruangkerja\Nilai::class);
   });
 });
