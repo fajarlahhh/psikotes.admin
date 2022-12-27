@@ -80,7 +80,7 @@
                                                 <option value="">-- Tidak --</option>
                                                 @foreach (\App\Models\MateriTiga::whereHas('detail')->get() as $row)
                                                     <option value="{{ $row->getKey() }}">
-                                                        {{ $row->getKey() < 11 ? 'Angka' : ($row->getKey() > 10 && $row->getKey() < 21 ? 'Simbol' : 'Huruf') }}
+                                                        {{ $row->getKey() < 11 ? 'Huruf' : ($row->getKey() > 10 && $row->getKey() < 21 ? 'Simbol' : 'Angka') }}
                                                         -
                                                         {{ $row->getKey() % 10 == 0 ? 10 : $row->getKey() % 10 }}
                                                     </option>
